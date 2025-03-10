@@ -12,7 +12,8 @@ namespace ProjetDotnet.Client.App
         InvalidMail,
         InvalidPrénom,
         InvalidSex,
-        InvalidSiret
+        InvalidSiret,
+        InvalidAdresse
     }
 
     public class ClientsException : Exception
@@ -48,6 +49,9 @@ namespace ProjetDotnet.Client.App
                         break;
                     case ClientsExceptionType.InvalidSiret:
                         message += " Siret doit avoir 14 chiffres.";
+                        break;
+                    case ClientsExceptionType.InvalidAdresse:
+                        message += "L'adresse postale n'est pas valide.";
                         break;
                     default:
                         message += "Erreur inconnue.";
