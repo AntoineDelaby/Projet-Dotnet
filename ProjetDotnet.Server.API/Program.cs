@@ -1,14 +1,19 @@
 using ProjetDotnet.Server.API;
-using ProjetDotnet.Server.API.Repositories;
+using ProjetDotnet.Server.API.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
+
+// Dossier à surveiller
+string watchDirectory = Path.Combine(Directory.GetCurrentDirectory(), "Import");
+
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddSingleton(new FileWatcherService(watchDirectory));
 
 var app = builder.Build();
 

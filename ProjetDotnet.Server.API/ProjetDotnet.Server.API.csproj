@@ -22,7 +22,11 @@
 
   <ItemGroup>
     <Folder Include="Exports\" />
-    <Folder Include="Services\" />
+    <Folder Include="Import\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ProjetDotnet.Enregistrement\ProjetDotnet.Enregistrement.csproj" />
   </ItemGroup>
 
 </Project>
