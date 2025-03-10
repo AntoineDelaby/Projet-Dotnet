@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <Folder Include="Exports\" />
+    <Folder Include="Import\" />
   </ItemGroup>
 
 </Project>

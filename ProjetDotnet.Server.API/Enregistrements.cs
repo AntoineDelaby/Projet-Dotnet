@@ -1,12 +1,5 @@
 ﻿namespace ProjetDotnet.Server.API
 {
-    public enum TypeOperation
-    {
-        RetraitEffectue,
-        FactureCarteBleue,
-        DepotGuichet
-    }
-    public enum Devise { EUR, USD, JPY, LBP };
     public class Enregistrements
     {
         public string NumCarte { get; set; }
@@ -19,7 +12,7 @@
 
 
 
-        public Enregistrements(string numCarte, decimal montant, string typeOperation, DateTime dateOperation, string devise)
+        public Enregistrements(string numCarte, decimal montant, TypeOperation typeOperation, DateTime dateOperation, Devise devise)
 
         {
             this.NumCarte = numCarte;
