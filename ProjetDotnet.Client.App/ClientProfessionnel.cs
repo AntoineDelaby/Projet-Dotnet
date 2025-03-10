@@ -11,19 +11,16 @@ namespace ProjetDotnet.Client.App
     {
         public string Siret { get; set; }
         public string StatutJuridique { get; set; }
-        public string AdresseDuSiège { get; set; }
+        
 
-
-
-
-
-        public ClientProfessionnel(int identifiant, string nom, string mail, string adressepostal, string siret, string statutJuridique, string adresseDuSiège)
-               : base(identifiant, nom, adressepostal, mail)
+        public ClientProfessionnel(int identifiant, string nom, string mail, string libelle_adresse, string complement_adresse,
+            string codepostal, string ville, string siret, string statutJuridique)
+               : base(identifiant, nom, mail, libelle_adresse, complement_adresse, codepostal, ville)
 
         {
             this.Siret = siret;
             this.StatutJuridique = statutJuridique;
-            this.AdresseDuSiège = adresseDuSiège;
+            
 
 
             // Validation Siret
@@ -35,7 +32,8 @@ namespace ProjetDotnet.Client.App
         public override void AfficherInfos()
         {
             Console.WriteLine($"ID: {Identifiant}, Nom: {Nom}, Mail: {Mail}");
-            Console.WriteLine($"Siret: {Siret}, Statut Juridique: {StatutJuridique},Adresse du Siège: {AdresseDuSiège}");
+            Console.WriteLine($"Siret: {Siret}, Statut Juridique: {StatutJuridique}");
+            AfficherAdresse();
         }
     }
 }
