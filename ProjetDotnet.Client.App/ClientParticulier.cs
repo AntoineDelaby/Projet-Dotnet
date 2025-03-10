@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
@@ -17,8 +19,9 @@ namespace ProjetDotnet.Client.App
 
         public DateTime DateDeNaissance { get; set; }
 
-        public ClientParticulier(int identifiant, string nom, string mail, string adressepostal, string prénom, ESexe sexe, DateTime dateDeNaissance)
-        : base(identifiant, nom, adressepostal, mail)
+        public ClientParticulier(int identifiant, string nom, string mail, string prénom,
+            ESexe sexe, string libelle_adresse, string complement_adresse, string codepostal, string ville, DateTime dateDeNaissance)
+        : base(identifiant, nom, mail, libelle_adresse,complement_adresse, codepostal, ville)
 
         {
             this.Prénom = prénom;
@@ -26,10 +29,10 @@ namespace ProjetDotnet.Client.App
             this.DateDeNaissance = dateDeNaissance;
 
 
-            // Validation du Prenoet Sexe
+            // Validation du Prenom et Sexe
             if (prénom.Length > 50)
                 throw new ClientsException(ClientsExceptionType.InvalidPrénom);
-            if (sexe != "M" && sexe != "F")
+            if (sexe is not (ESexe)'M' and not (ESexe)'F')
                 throw new ClientsException(ClientsExceptionType.InvalidSex);
 
         }
@@ -39,6 +42,7 @@ namespace ProjetDotnet.Client.App
             Console.WriteLine($"ID: {Identifiant}, Nom: {Nom}, Mail: {Mail}");
 
             Console.WriteLine($"Client Particulier: {Nom} {Prénom}, Sexe: {Sexe}, Date de Naissance: {DateDeNaissance.ToShortDateString()}");
+            AfficherAdresse();
         }
     }
 }
