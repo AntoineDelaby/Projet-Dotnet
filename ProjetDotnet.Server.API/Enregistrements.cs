@@ -1,12 +1,19 @@
 ﻿namespace ProjetDotnet.Server.API
 {
+    public enum TypeOperation
+    {
+        RetraitEffectue,
+        FactureCarteBleue,
+        DepotGuichet
+    }
+    public enum Devise { EUR, USD, JPY, LBP };
     public class Enregistrements
     {
         public string NumCarte { get; set; }
         public decimal Montant { get; set; }
-        public string TypeOperation { get; set; }
+        public TypeOperation TypeOperation { get; set; }
         public DateTime DateOperation { get; set; }
-        public string Devise { get; set; }
+        public Devise Devise { get; set; }
 
 
 
