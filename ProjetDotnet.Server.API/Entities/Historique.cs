@@ -3,8 +3,11 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ProjetDotnet.Server.API
 {
-    public class Enregistrements
+    public class Historique
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
         public string NumCarte { get; set; }
         public decimal Montant { get; set; }
         public string TypeOperation { get; set; }
@@ -15,9 +18,10 @@ namespace ProjetDotnet.Server.API
 
 
 
-        public Enregistrements(string numCarte, decimal montant, string typeOperation, DateTime dateOperation, string devise)
+        public Historique(int id, string numCarte, decimal montant, string typeOperation, DateTime dateOperation, string devise)
 
         {
+            this.Id = id;
             this.NumCarte = numCarte;
             this.Montant = montant;
             this.TypeOperation = typeOperation;

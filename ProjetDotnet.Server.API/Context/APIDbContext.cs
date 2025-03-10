@@ -4,8 +4,8 @@ namespace ProjetDotnet.Server.API.Context
 {
     public class APIDbContext : DbContext
     {
-        public DbSet<Enregistrement> Historique { get; set; };
-        public DbSet<Enregistrement> HistoriqueErreurs { get; set; };
+        public DbSet<Historique> Historique { get; set; }
+        public DbSet<Historique> HistoriqueErreur { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
