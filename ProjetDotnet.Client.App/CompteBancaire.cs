@@ -8,20 +8,20 @@ namespace ProjetDotnet.Client.App
 {
     public class CompteBancaire
     {
-        public string NuméroCompte { get; set; }
+        public string NumeroCompte { get; set; }
         public DateTime DateOuverture { get; set; }
         public decimal Solde { get; set; }
 
-        public CompteBancaire(string numéroCompte)
+        public CompteBancaire(string numeroCompte, DateTime dateOuverture, decimal solde = 1000.00M)
         {
-            this.NuméroCompte = numéroCompte;
-            DateOuverture = DateTime.Now;
-            Solde = 1000.00m; 
+            this.NumeroCompte = numeroCompte;
+            this.DateOuverture = dateOuverture;
+            this.Solde = solde;
         }
 
         public void AfficherCompte()
         {
-            Console.WriteLine($"Numéro de Compte: {NuméroCompte}, Ouvert le: {DateOuverture.ToShortDateString()}, Solde: {Solde}€");
+            Console.WriteLine($"Numéro de Compte: {NumeroCompte}, Ouvert le: {DateOuverture.ToShortDateString()}, Solde: {Solde} €");
         }
 
     }
