@@ -14,7 +14,7 @@ namespace ProjetDotnet.Enregistrement.Mapping
         public MappingProfile()
         {
             CreateMap<Historique, HistoriqueDto>()
-             .ForMember(dest => dest.NumeroCarteBancaire,
+             .ForMember(dest => dest.NumCarte,
                         o => o.MapFrom(src => src.NumCarte.Replace(" ", ""))) 
              .ReverseMap();
         }

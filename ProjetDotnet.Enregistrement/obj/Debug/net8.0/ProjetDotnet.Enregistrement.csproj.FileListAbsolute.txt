@@ -73,3 +73,8 @@ C:\Users\Antoine\Desktop\Formation AJC\Dotnet\SlnProjetDotnet\ProjetDotnet.Enreg
 C:\Users\Antoine\Desktop\Formation AJC\Dotnet\SlnProjetDotnet\ProjetDotnet.Enregistrement\obj\Debug\net8.0\ProjetDotnet.Enregistrement.genruntimeconfig.cache
 C:\Users\Antoine\Desktop\Formation AJC\Dotnet\SlnProjetDotnet\ProjetDotnet.Enregistrement\obj\Debug\net8.0\ref\ProjetDotnet.Enregistrement.dll
 C:\Users\Antoine\Desktop\Formation AJC\Dotnet\SlnProjetDotnet\ProjetDotnet.Enregistrement\bin\Debug\net8.0\Newtonsoft.Json.dll
+C:\Users\Antoine\Desktop\Formation AJC\Dotnet\SlnProjetDotnet\ProjetDotnet.Enregistrement\bin\Debug\net8.0\ProjetDotnet.Generation.deps.json
+C:\Users\Antoine\Desktop\Formation AJC\Dotnet\SlnProjetDotnet\ProjetDotnet.Enregistrement\bin\Debug\net8.0\ProjetDotnet.Generation.runtimeconfig.json
+C:\Users\Antoine\Desktop\Formation AJC\Dotnet\SlnProjetDotnet\ProjetDotnet.Enregistrement\bin\Debug\net8.0\ProjetDotnet.Generation.exe
+C:\Users\Antoine\Desktop\Formation AJC\Dotnet\SlnProjetDotnet\ProjetDotnet.Enregistrement\bin\Debug\net8.0\ProjetDotnet.Generation.dll
+C:\Users\Antoine\Desktop\Formation AJC\Dotnet\SlnProjetDotnet\ProjetDotnet.Enregistrement\bin\Debug\net8.0\ProjetDotnet.Generation.pdb

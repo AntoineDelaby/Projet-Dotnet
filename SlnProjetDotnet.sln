@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjetDotnet.Enregistrement
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjetDotnet.Server.Data", "ProjetDotnet.Server.Data\ProjetDotnet.Server.Data.csproj", "{7203CF4D-1CFA-4AAD-8061-08A8EA1DA30F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjetDotnet.Generation", "ProjetDotnet.Generation\ProjetDotnet.Generation.csproj", "{607E5303-3506-63B0-7098-2AED43620711}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{7203CF4D-1CFA-4AAD-8061-08A8EA1DA30F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7203CF4D-1CFA-4AAD-8061-08A8EA1DA30F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7203CF4D-1CFA-4AAD-8061-08A8EA1DA30F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{607E5303-3506-63B0-7098-2AED43620711}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{607E5303-3506-63B0-7098-2AED43620711}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{607E5303-3506-63B0-7098-2AED43620711}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{607E5303-3506-63B0-7098-2AED43620711}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

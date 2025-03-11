@@ -5,7 +5,7 @@ namespace ProjetDotnet.Server.Data.Context
     public class APIDbContext : DbContext
     {
         public DbSet<Historique> Historique { get; set; }
-        public DbSet<Historique> HistoriqueErreur { get; set; }
+        public DbSet<HistoriqueErreur> HistoriqueErreur { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

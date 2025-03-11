@@ -23,9 +23,15 @@ namespace ProjetDotnet.Server.Data.Repositories
         {
             using var context = new APIDbContext();
             var historique = await context.HistoriqueErreur
-                .ToListAsync<Historique>();
+                .ToListAsync<HistoriqueErreur>();
 
-            return historique;
+            List<Historique> histList = new List<Historique>();
+            foreach (var herr in historique)
+            {
+                histList.Add(convertToHistorique(herr));
+            }
+
+            return histList;
         }
 
         // Récupération d'un enregistrement défaillant via son ID
@@ -33,20 +39,32 @@ namespace ProjetDotnet.Server.Data.Repositories
         {
             using var context = new APIDbContext();
             var historique = await context.HistoriqueErreur
-                .Where<Historique>(h => h.Id == id)
-                .SingleOrDefaultAsync<Historique>();
+                .Where<HistoriqueErreur>(h => h.Id == id)
+                .SingleOrDefaultAsync<HistoriqueErreur>();
 
-            return historique;
+            return convertToHistorique(historique);
         }
 
         // Ajout d'un nouvel enregistrement dans la table d'historique défaillant
         public async Task<int> InsertHistorique(Historique historique)
         {
+            Console.WriteLine(historique.Id + " " + historique.Montant + " " + historique.Devise
+                + " " + historique.TypeOperation + " " + historique.DateOperation + " Numcarte : " + historique.NumCarte);
             using var context = new APIDbContext();
-            context.HistoriqueErreur.Add(historique);
+            context.HistoriqueErreur.Add(convertToHistoriqueErreur(historique));
             await context.SaveChangesAsync();
 
             return historique.Id;
+        }
+
+        private Historique convertToHistorique(HistoriqueErreur herr)
+        {
+            return new Historique(herr.Id, herr.NumCarte, herr.Montant, herr.TypeOperation, herr.DateOperation, herr.Devise);
+        }
+
+        private HistoriqueErreur convertToHistoriqueErreur(Historique hist)
+        {
+            return new HistoriqueErreur(hist.Id, hist.NumCarte, hist.Montant, hist.TypeOperation, hist.DateOperation, hist.Devise);
         }
     }
 }

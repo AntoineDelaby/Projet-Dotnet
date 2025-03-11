@@ -10,6 +10,7 @@
         "dependencies": {
           "AutoMapper": "14.0.0",
           "Newtonsoft.Json": "13.0.3",
+          "ProjetDotnet.Generation": "1.0.0",
           "ProjetDotnet.Server.Data": "1.0.0"
         },
         "runtime": {
@@ -635,6 +636,14 @@
           }
         }
       },
+      "ProjetDotnet.Generation/1.0.0": {
+        "runtime": {
+          "ProjetDotnet.Generation.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
       "ProjetDotnet.Server.Data/1.0.0": {
         "dependencies": {
           "Microsoft.EntityFrameworkCore": "9.0.2",
@@ -1060,6 +1069,11 @@
       "sha512": "sha512-IXoJOXIqc39AIe+CIR7koBtRGMiCt/LPM3lI+PELtDIy9XdyeSrwXFdWV9dzJ2Awl0paLWUaknLxFQ5HpHZUog==",
       "path": "system.windows.extensions/6.0.0",
       "hashPath": "system.windows.extensions.6.0.0.nupkg.sha512"
+    },
+    "ProjetDotnet.Generation/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     },
     "ProjetDotnet.Server.Data/1.0.0": {
       "type": "project",

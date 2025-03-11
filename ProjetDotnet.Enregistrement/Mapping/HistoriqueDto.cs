@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjetDotnet.Generation;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -7,12 +8,7 @@ using System.Threading.Tasks;
 
 namespace ProjetDotnet.Enregistrement.Mapping
 {
-    public enum TypeOperation
-    {
-        RetraitEffectue,
-        FactureCarteBleue,
-        DepotGuichet
-    }
+
     public class HistoriqueDto
     {
         public int Id { get; set; }
@@ -28,15 +24,15 @@ namespace ProjetDotnet.Enregistrement.Mapping
         public DateTime DateOperation { get; set; }
 
         [Required(ErrorMessage = "La devise est requise.")]
-        public string Devise { get; set; }
+        public Devise Devise { get; set; }
 
-        private string _numeroCarteBancaire;
+        private string _numCarte;
 
         [Required(ErrorMessage = "Le numéro de carte bancaire est requis.")]
         [StringLength(16, MinimumLength = 16, ErrorMessage = "Le numéro de carte doit contenir 16 chiffres.")]
-        public string NumeroCarteBancaire
+        public string NumCarte
         {
-            get => _numeroCarteBancaire;
+            get => _numCarte;
             set
             {
                 if (string.IsNullOrWhiteSpace(value))
@@ -44,14 +40,14 @@ namespace ProjetDotnet.Enregistrement.Mapping
                     throw new ArgumentException("Le numéro de carte bancaire ne peut pas être vide.");
                 }
 
-                _numeroCarteBancaire = value.Replace(" ", "").Trim();
+                _numCarte = value.Replace(" ", "").Trim();
 
-                if (!_numeroCarteBancaire.All(char.IsDigit))
+                if (!_numCarte.All(char.IsDigit))
                 {
                     // exception
                 }
 
-                if (_numeroCarteBancaire.Length != 16)
+                if (_numCarte.Length != 16)
                 {
                     // exception
                 }

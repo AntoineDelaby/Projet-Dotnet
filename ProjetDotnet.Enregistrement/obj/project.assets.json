@@ -1040,6 +1040,16 @@
           }
         }
       },
+      "ProjetDotnet.Generation/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/ProjetDotnet.Generation.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ProjetDotnet.Generation.dll": {}
+        }
+      },
       "ProjetDotnet.Server.Data/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
@@ -2889,6 +2899,11 @@
         "useSharedDesignerContext.txt"
       ]
     },
+    "ProjetDotnet.Generation/1.0.0": {
+      "type": "project",
+      "path": "../ProjetDotnet.Generation/ProjetDotnet.Generation.csproj",
+      "msbuildProject": "../ProjetDotnet.Generation/ProjetDotnet.Generation.csproj"
+    },
     "ProjetDotnet.Server.Data/1.0.0": {
       "type": "project",
       "path": "../ProjetDotnet.Server.Data/ProjetDotnet.Server.Data.csproj",
@@ -2899,6 +2914,7 @@
     "net8.0": [
       "AutoMapper >= 14.0.0",
       "Newtonsoft.Json >= 13.0.3",
+      "ProjetDotnet.Generation >= 1.0.0",
       "ProjetDotnet.Server.Data >= 1.0.0"
     ]
   },
@@ -2934,6 +2950,9 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
+            "C:\\Users\\Antoine\\Desktop\\Formation AJC\\Dotnet\\SlnProjetDotnet\\ProjetDotnet.Generation\\ProjetDotnet.Generation.csproj": {
+              "projectPath": "C:\\Users\\Antoine\\Desktop\\Formation AJC\\Dotnet\\SlnProjetDotnet\\ProjetDotnet.Generation\\ProjetDotnet.Generation.csproj"
+            },
             "C:\\Users\\Antoine\\Desktop\\Formation AJC\\Dotnet\\SlnProjetDotnet\\ProjetDotnet.Server.Data\\ProjetDotnet.Server.Data.csproj": {
               "projectPath": "C:\\Users\\Antoine\\Desktop\\Formation AJC\\Dotnet\\SlnProjetDotnet\\ProjetDotnet.Server.Data\\ProjetDotnet.Server.Data.csproj"
             }

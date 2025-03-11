@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ProjetDotnet.Enregistrement")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c8d66a9be59063a02799cb1304ea55dc43590196")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+639f591efed37b64ffd2bbe5e4f4c68d91684fcb")]
 [assembly: System.Reflection.AssemblyProductAttribute("ProjetDotnet.Enregistrement")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ProjetDotnet.Enregistrement")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

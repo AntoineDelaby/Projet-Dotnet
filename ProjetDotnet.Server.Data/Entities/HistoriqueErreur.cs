@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ProjetDotnet.Server.Data
 {
-    public class Historique
+    public class HistoriqueErreur
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -18,7 +18,7 @@ namespace ProjetDotnet.Server.Data
 
 
 
-        public Historique(int id, string numCarte, decimal montant, string typeOperation, DateTime dateOperation, string devise)
+        public HistoriqueErreur(int id, string numCarte, decimal montant, string typeOperation, DateTime dateOperation, string devise)
 
         {
             this.Id = id;
@@ -29,7 +29,7 @@ namespace ProjetDotnet.Server.Data
             this.Devise = devise;
         }
 
-        public Historique()
+        public HistoriqueErreur()
         {
         }
 
