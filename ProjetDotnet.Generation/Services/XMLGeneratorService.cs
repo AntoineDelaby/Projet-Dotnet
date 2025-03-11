@@ -12,7 +12,7 @@ namespace ProjetDotnet.Generation
         {
             List<Enregistrements> enregistrements = new List<Enregistrements>();
 
-            for (int i =0; i<10; i++)
+            for (int i =0; i<100; i++)
             {
                 enregistrements.Add(new Enregistrements(
                     GenerateRandomCardNumber(),
@@ -46,8 +46,8 @@ namespace ProjetDotnet.Generation
 
         private string GenerateRandomCardNumber()
         {
-            string baseNumber = "4974 0185 0223 ";
-            string lastDigits = random.Next(1000, 9999).ToString(); 
+            string baseNumber = "4974 0185 0223 12";
+            string lastDigits = random.Next(00, 99).ToString(); 
             return baseNumber + lastDigits;
         }
 
