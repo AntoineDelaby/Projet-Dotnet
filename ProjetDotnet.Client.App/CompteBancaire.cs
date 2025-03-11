@@ -25,14 +25,6 @@ namespace ProjetDotnet.Client.App
         }
 
 
-        // Ajout d'une carte bancaire au compte
-        //public void AjouterCarteBancaire(CarteBancaire carte)
-        //{
-        //    CartesBancaires.Add(carte);
-        //}
-
-
-
         public void AfficherCompte()
         {
             Console.WriteLine($"Numéro de Compte: {NumeroCompte}, Ouvert le: {DateOuverture.ToShortDateString()}, Solde: {Solde} €");
