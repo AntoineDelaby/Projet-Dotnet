@@ -8,9 +8,9 @@ namespace ProjetDotnet.Client.App
 {
     public enum ClientsExceptionType
     {
-        InvalidName,
+        InvalidNom,
         InvalidMail,
-        InvalidPrénom,
+        InvalidPrenom,
         InvalidSex,
         InvalidSiret,
         InvalidAdresse
@@ -21,30 +21,27 @@ namespace ProjetDotnet.Client.App
         public ClientsExceptionType Type { get; set; }
 
         public ClientsException(ClientsExceptionType type)
-             : base(GetMessage(type))
+             : base()
         {
             this.Type = type;
         }
 
-        private static string? GetMessage(ClientsExceptionType type)
-        {
-            throw new NotImplementedException();
-        }
+        
 
-        public string Message
+        public override string Message
         {
             get
             {
                 string message = "Erreur - ";
                 switch (Type)
                 {
-                    case ClientsExceptionType.InvalidName:
+                    case ClientsExceptionType.InvalidNom:
                         message += "Le nom ne doit pas dépasser 50 caractères.";
                         break;
                     case ClientsExceptionType.InvalidMail:
                         message += "Email invalide. Format attendu : doit contenir un @ exemple@test.fr";
                         break;
-                    case ClientsExceptionType.InvalidPrénom:
+                    case ClientsExceptionType.InvalidPrenom:
                         message += "Le nom ne doit pas dépasser 50 caractères.";
                         break;
                     case ClientsExceptionType.InvalidSiret:
