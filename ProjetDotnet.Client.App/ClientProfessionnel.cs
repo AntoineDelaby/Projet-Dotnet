@@ -42,7 +42,8 @@ namespace ProjetDotnet.Client.App
         public override void AfficherInfos()
         {
             Console.WriteLine($"ID: {Identifiant}, Nom: {Nom}, Mail: {Mail}");
-            Console.WriteLine($"Siret: {Siret}, Statut Juridique: {StatutJuridique}");
+            Console.WriteLine($"Siret: {Siret}, Statut Juridique: {StatutJuridique}, Libelle AdresseSiege : {Libelle_AdresseSiege}, Complement Adresse Siege : {Complement_AdresseSiege}," +
+                $" Codepostal Siege : {Codepostal_Siege}, Ville Siege : {Ville_Siege} ");
             AfficherAdresse();
         }
     }
