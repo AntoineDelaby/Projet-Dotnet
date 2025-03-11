@@ -49,3 +49,6 @@
 /ProjetDotnet.Enregistrement/bin/Debug/net8.0/ProjetDotnet.Enregistrement.pdb
 /ProjetDotnet.Enregistrement/bin/Debug/net8.0/ProjetDotnet.Enregistrement.exe
 /ProjetDotnet.Enregistrement/bin/Debug/net8.0/ProjetDotnet.Enregistrement.dll
+*./bin/*
+/ProjetDotnet.Generation/Import/*
+/ProjetDotnet.Server.API/Exports/*

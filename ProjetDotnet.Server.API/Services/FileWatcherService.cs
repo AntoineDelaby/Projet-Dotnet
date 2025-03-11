@@ -53,28 +53,11 @@ namespace ProjetDotnet.Server.API.Services
                         await historiqueService.InsertHistorique(historiqueDto);
                     }
                 }
-                //using (StreamReader reader = new StreamReader(xmlfs))
-                //{
-                //    //string line;
-                //    //while ((line = reader.ReadLine()) != null)
-                //    //{
-                //    //    var values = line.Split(',');
-                //    //    HistoriqueDto historiqueDto = new HistoriqueDto
-                //    //    {
-                //    //        Id = Int32.Parse(values[0]),
-                //    //        Montant = Decimal.Parse(values[1]),
-                //    //        TypeOperation = (TypeOperation)Enum.Parse(typeof(TypeOperation), values[2]),
-                //    //        DateOperation = DateTime.Parse(values[3]),
-                //    //        Devise = (Devise)Enum.Parse(typeof(Devise), values[4]),
-                //    //        NumeroCarteBancaire = values[5]
-                //    //    };
-                //    //    await historiqueService.InsertHistorique(historiqueDto);
-
-                //    //}
-                //    List<Enregistrements> enregistrements = (List<Enregistrements>)serializer.Deserialize(reader);
-                //}
 
                 xmlfs.Close();
+
+                // Suppression du fichier XML pour la prochaine génération automatique
+                File.Delete(filePath);
             }
             catch (Exception ex)
             {

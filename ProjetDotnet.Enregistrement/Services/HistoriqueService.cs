@@ -95,7 +95,7 @@ namespace ProjetDotnet.Server.API.Services
         }
 
         // Génère le fichier JSON de l'historique des enregistrements validés
-        public async Task<int> GenerateHistoriqueJson(Dictionary<string, decimal> tauxDevise)
+        public async Task<string> GenerateHistoriqueJson(Dictionary<string, decimal> tauxDevise)
         {
             // Récupération des enregistrements validés
             var histEntities = await _repo.GetAll();
@@ -113,12 +113,20 @@ namespace ProjetDotnet.Server.API.Services
 
             // Destination du fichier JSON
             string filePath = Path.Combine(Directory.GetCurrentDirectory(), "Exports\\export.json");
+
+            // Suppression du fichier JSON précédent
+            if (File.Exists(filePath))
+            {
+                File.Delete(filePath);
+            }
+
+            // Création du nouveau fichier d'export
             using (FileStream fs = new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.Write))
             {
                 await JsonSerializer.SerializeAsync(fs, jsonList, new JsonSerializerOptions { WriteIndented = true });
             }
 
-            return 0;
+            return JsonSerializer.Serialize(jsonList, new JsonSerializerOptions { WriteIndented = true });
         }
     }
 }
