@@ -16,8 +16,4 @@
     <ProjectReference Include="..\ProjetDotnet.Server.Data\ProjetDotnet.Server.Data.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Import\" />
-  </ItemGroup>
-
 </Project>
