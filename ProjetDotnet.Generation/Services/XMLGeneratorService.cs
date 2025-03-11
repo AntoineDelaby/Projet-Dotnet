@@ -46,8 +46,8 @@ namespace ProjetDotnet.Generation
 
         private string GenerateRandomCardNumber()
         {
-            string baseNumber = "4974 0185 0223 ";
-            string lastDigits = random.Next(1000, 9999).ToString(); 
+            string baseNumber = "4974 0185 0223 12";
+            string lastDigits = random.Next(00, 99).ToString(); 
             return baseNumber + lastDigits;
         }
 

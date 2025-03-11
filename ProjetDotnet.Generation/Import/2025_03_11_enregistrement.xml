@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfEnregistrements xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Enregistrements>
+    <NumCarte>4974 0185 0223 4786</NumCarte>
+    <Montant>114.54</Montant>
+    <TypeOperation>DepotGuichet</TypeOperation>
+    <DateOperation>2025-02-24T10:33:46.6705226+01:00</DateOperation>
+    <Devise>JPY</Devise>
+  </Enregistrements>
+  <Enregistrements>
+    <NumCarte>4974 0185 0223 4009</NumCarte>
+    <Montant>487.83</Montant>
+    <TypeOperation>RetraitEffectue</TypeOperation>
+    <DateOperation>2025-03-05T10:33:46.6741937+01:00</DateOperation>
+    <Devise>USD</Devise>
+  </Enregistrements>
+  <Enregistrements>
+    <NumCarte>4974 0185 0223 3285</NumCarte>
+    <Montant>32.78</Montant>
+    <TypeOperation>FactureCarteBleue</TypeOperation>
+    <DateOperation>2025-02-27T10:33:46.6741987+01:00</DateOperation>
+    <Devise>EUR</Devise>
+  </Enregistrements>
+  <Enregistrements>
+    <NumCarte>4974 0185 0223 8569</NumCarte>
+    <Montant>195.59</Montant>
+    <TypeOperation>RetraitEffectue</TypeOperation>
+    <DateOperation>2025-02-22T10:33:46.6742+01:00</DateOperation>
+    <Devise>USD</Devise>
+  </Enregistrements>
+  <Enregistrements>
+    <NumCarte>4974 0185 0223 7176</NumCarte>
+    <Montant>413.89</Montant>
+    <TypeOperation>RetraitEffectue</TypeOperation>
+    <DateOperation>2025-03-10T10:33:46.6742012+01:00</DateOperation>
+    <Devise>EUR</Devise>
+  </Enregistrements>
+  <Enregistrements>
+    <NumCarte>4974 0185 0223 6335</NumCarte>
+    <Montant>259.15</Montant>
+    <TypeOperation>DepotGuichet</TypeOperation>
+    <DateOperation>2025-02-11T10:33:46.6742027+01:00</DateOperation>
+    <Devise>JPY</Devise>
+  </Enregistrements>
+  <Enregistrements>
+    <NumCarte>4974 0185 0223 2281</NumCarte>
+    <Montant>267.91</Montant>
+    <TypeOperation>RetraitEffectue</TypeOperation>
+    <DateOperation>2025-03-04T10:33:46.6742038+01:00</DateOperation>
+    <Devise>LBP</Devise>
+  </Enregistrements>
+  <Enregistrements>
+    <NumCarte>4974 0185 0223 2778</NumCarte>
+    <Montant>499.98</Montant>
+    <TypeOperation>RetraitEffectue</TypeOperation>
+    <DateOperation>2025-02-23T10:33:46.6742049+01:00</DateOperation>
+    <Devise>EUR</Devise>
+  </Enregistrements>
+  <Enregistrements>
+    <NumCarte>4974 0185 0223 6177</NumCarte>
+    <Montant>34.87</Montant>
+    <TypeOperation>FactureCarteBleue</TypeOperation>
+    <DateOperation>2025-02-12T10:33:46.6742059+01:00</DateOperation>
+    <Devise>LBP</Devise>
+  </Enregistrements>
+  <Enregistrements>
+    <NumCarte>4974 0185 0223 9982</NumCarte>
+    <Montant>343.73</Montant>
+    <TypeOperation>FactureCarteBleue</TypeOperation>
+    <DateOperation>2025-03-05T10:33:46.6742071+01:00</DateOperation>
+    <Devise>JPY</Devise>
+  </Enregistrements>
+</ArrayOfEnregistrements>
