@@ -12,12 +12,26 @@ namespace ProjetDotnet.Client.App
         public DateTime DateOuverture { get; set; }
         public decimal Solde { get; set; }
 
+
+        //public List<CarteBancaire> CartesBancaires { get; set; }
+
+
         public CompteBancaire(string numeroCompte, DateTime dateOuverture, decimal solde = 1000.00M)
         {
             this.NumeroCompte = numeroCompte;
             this.DateOuverture = dateOuverture;
             this.Solde = solde;
+            //CartesBancaires = new List<CarteBancaire>();
         }
+
+
+        // Ajout d'une carte bancaire au compte
+        //public void AjouterCarteBancaire(CarteBancaire carte)
+        //{
+        //    CartesBancaires.Add(carte);
+        //}
+
+
 
         public void AfficherCompte()
         {
