@@ -8,16 +8,48 @@ namespace ProjetDotnet.Client.App
 {
     public abstract class Clients
     {
-        public int Identifiant { get; set; }
-        public string Nom { get; set; }
+        private string nom;
+        private string mail;
 
+        public int Identifiant { get; set; }
         public string Libelle_Adresse { get; set; }
         public string Complement_Adresse { get; set; }
         public string CodePostal { get; set; }
         public string Ville { get; set; }
 
 
-        public string Mail { get; set; }
+
+        // Valider le nom (50 char)
+        public string Nom
+        {
+            get { return nom; }
+            set
+            {
+
+                if (value.Length > 50)
+                {
+                    throw new ClientsException(ClientsExceptionType.InvalidNom);
+                }
+
+                nom = value;
+            }
+        }
+
+        // Valider le mail (doit contenir @)
+        public string Mail
+        {
+            get { return mail; }
+            set
+            {
+
+                if (!value.Contains("@"))
+                {
+                    throw new ClientsException(ClientsExceptionType.InvalidMail);
+                }
+
+                mail = value;
+            }
+        }
 
 
 
@@ -26,35 +58,12 @@ namespace ProjetDotnet.Client.App
 
         {
             this.Identifiant = identifiant;
-            this.Nom = nom;
             this.Mail = mail;
+            this.Nom = nom;
             this.Libelle_Adresse = libelle_adresse;
             this.Complement_Adresse = complement_adresse;
             this.CodePostal = codepostal;
             this.Ville = ville;
-        }
-
-
-
-
-
-        // Valider le nom (50 char)
-        public void SetNom(string nom)
-        {
-            if (nom.Length > 50)
-                throw new ClientsException(ClientsExceptionType.InvalidName);
-            this.Nom = nom;
-        }
-
-
-        // Valider le mail (doit contenir @)
-
-        public void SetMail(string mail)
-        {
-
-            if (!mail.Contains("@"))
-                throw new ClientsException(ClientsExceptionType.InvalidMail);
-            this.Mail = mail;
         }
 
         // Validation de l'adresse
@@ -70,7 +79,7 @@ namespace ProjetDotnet.Client.App
         }
 
         public abstract void AfficherInfos();
-    
+
 
         public void AfficherAdresse()
         {
