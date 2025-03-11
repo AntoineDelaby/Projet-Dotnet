@@ -1,4 +1,4 @@
-﻿namespace ProjetDotnet.Server.API
+﻿namespace ProjetDotnet.Generation
 {
     public enum TypeOperation
     {

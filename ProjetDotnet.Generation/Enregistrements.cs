@@ -1,4 +1,4 @@
-﻿namespace ProjetDotnet.Server.API
+﻿namespace ProjetDotnet.Generation
 {
     public class Enregistrements
     {
@@ -8,9 +8,7 @@
         public DateTime DateOperation { get; set; }
         public Devise Devise { get; set; }
 
-
-
-
+        public Enregistrements() { }
 
         public Enregistrements(string numCarte, decimal montant, TypeOperation typeOperation, DateTime dateOperation, Devise devise)
 
@@ -21,10 +19,6 @@
             this.DateOperation = dateOperation;
             this.Devise = devise;
         }
-
-
-
-
 
     }
 }
