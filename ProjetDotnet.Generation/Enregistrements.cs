@@ -1,4 +1,4 @@
-﻿namespace ProjetDotnet.Generation
+namespace ProjetDotnet.Generation
 {
     public class Enregistrements
     {

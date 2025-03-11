@@ -9,10 +9,11 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="14.0.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Import\" />
+    <ProjectReference Include="..\ProjetDotnet.Server.Data\ProjetDotnet.Server.Data.csproj" />
   </ItemGroup>
 
 </Project>

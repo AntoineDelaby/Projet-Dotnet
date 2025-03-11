@@ -25,7 +25,7 @@ namespace ProjetDotnet.Generation
 
             string projectRoot = Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent.FullName;
             string solutionRoot = Directory.GetParent(projectRoot).FullName;
-            string directoryPath = Path.Combine(solutionRoot, "ProjetDotnet.Enregistrement", "Import");
+            string directoryPath = Path.Combine(solutionRoot, "ProjetDotnet.Generation", "Import");
             Console.WriteLine(directoryPath);
             if (!Directory.Exists(directoryPath))
             {

@@ -2,7 +2,7 @@
 using ProjetDotnet.Enregistrement.Mapping;
 using System.Net.NetworkInformation;
 
-namespace Recap.Business
+namespace ProjetDotnet.Enregistrement
 {
     public class MappingConfig
     {
