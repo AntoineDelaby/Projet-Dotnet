@@ -1,21 +1,16 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
-
-namespace ProjetDotnet.Server.API
+namespace ProjetDotnet.Generation
 {
     public class Enregistrements
     {
         public string NumCarte { get; set; }
         public decimal Montant { get; set; }
-        public string TypeOperation { get; set; }
+        public TypeOperation TypeOperation { get; set; }
         public DateTime DateOperation { get; set; }
-        public string Devise { get; set; }
+        public Devise Devise { get; set; }
 
+        public Enregistrements() { }
 
-
-
-
-        public Enregistrements(string numCarte, decimal montant, string typeOperation, DateTime dateOperation, string devise)
+        public Enregistrements(string numCarte, decimal montant, TypeOperation typeOperation, DateTime dateOperation, Devise devise)
 
         {
             this.NumCarte = numCarte;
@@ -24,10 +19,6 @@ namespace ProjetDotnet.Server.API
             this.DateOperation = dateOperation;
             this.Devise = devise;
         }
-
-
-
-
 
     }
 }
