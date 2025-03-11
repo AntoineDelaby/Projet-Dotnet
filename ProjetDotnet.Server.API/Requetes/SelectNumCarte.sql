@@ -1,0 +1,1 @@
+﻿select * from Historique where NumCarte = '4974018502231240'
