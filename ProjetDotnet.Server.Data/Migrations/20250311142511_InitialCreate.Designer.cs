@@ -12,7 +12,7 @@ using ProjetDotnet.Server.Data.Context;
 namespace ProjetDotnet.Server.Data.Migrations
 {
     [DbContext(typeof(APIDbContext))]
-    [Migration("20250311125732_InitialCreate")]
+    [Migration("20250311142511_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
