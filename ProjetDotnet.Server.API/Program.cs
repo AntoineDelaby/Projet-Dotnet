@@ -3,11 +3,10 @@ using ProjetDotnet.Server.API.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
-
-// Dossier à surveiller
+// Dossier à surveiller pour l'import du fichier XML généré aléatoirement
 string watchDirectory = Path.Combine(Directory.GetCurrentDirectory(), "Import");
+
+// Add services to the container.
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

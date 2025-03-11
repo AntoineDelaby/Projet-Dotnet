@@ -1,9 +1,13 @@
 ﻿using AutoMapper;
+using Newtonsoft.Json.Linq;
 using ProjetDotnet.Enregistrement;
 using ProjetDotnet.Enregistrement.Mapping;
 using ProjetDotnet.Server.Data;
 using ProjetDotnet.Server.Data.Repositories;
 using System.Linq;
+using System.Runtime.InteropServices.JavaScript;
+using System.Text.Json;
+using System.Xml.Serialization;
 
 namespace ProjetDotnet.Server.API.Services
 {
@@ -85,6 +89,32 @@ namespace ProjetDotnet.Server.API.Services
                 insertResult = await _repoErreur.InsertHistorique(_mapper.Map<Historique>(historique));
             }
             return insertResult;
+        }
+
+        // Génère le fichier JSON de l'historique des enregistrements validés
+        public async Task<int> GenerateHistoriqueJson(JObject tauxDevise)
+        {
+            // Récupération des enregistrements validés
+            var histEntities = await _repo.GetAll();
+
+            // Destination du fichier JSON
+            string filePath = Path.Combine(Directory.GetCurrentDirectory(), "Exports\\export.json");
+            FileStream fs = new FileStream(filePath, FileMode.Append, FileAccess.Write);
+
+            foreach (var item in histEntities)
+            {
+                if(!item.Devise.Equals("EUR"))
+                {
+                    // On fait la conversion en euros avec les taux qu'on récupère de la requête
+                    item.Montant = item.Montant * tauxDevise[item.Devise].Value<decimal>();
+                }
+                var jsonInfo = JsonSerializer.Serialize<Historique>(item);
+                JsonSerializer.Serialize(fs, item);
+            }
+
+            fs.Close();
+
+            return 0;
         }
     }
 }
