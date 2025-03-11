@@ -80,39 +80,43 @@ namespace ProjetDotnet.Server.API.Services
         // Ajoute un nouvel enregistrement historisé s'il est validé
         public async Task<int> InsertHistorique(HistoriqueDto historique)
         {
+            Console.WriteLine("Insertion de l'historique : " + historique.Id + " " + historique.Montant + " " + historique.Devise);
             var insertResult = -1;
-            if(IsValidCardNumber(historique.NumeroCarteBancaire))
+            if(IsValidCardNumber(historique.NumCarte))
             {
+                Console.WriteLine("Carte valide : " + historique.NumCarte);
                 insertResult = await _repo.InsertHistorique(_mapper.Map<Historique>(historique));
             } else
             {
+                Console.WriteLine("Carte invalide : " + historique.NumCarte);
                 insertResult = await _repoErreur.InsertHistorique(_mapper.Map<Historique>(historique));
             }
             return insertResult;
         }
 
         // Génère le fichier JSON de l'historique des enregistrements validés
-        public async Task<int> GenerateHistoriqueJson(JObject tauxDevise)
+        public async Task<int> GenerateHistoriqueJson(Dictionary<string, decimal> tauxDevise)
         {
             // Récupération des enregistrements validés
             var histEntities = await _repo.GetAll();
 
-            // Destination du fichier JSON
-            string filePath = Path.Combine(Directory.GetCurrentDirectory(), "Exports\\export.json");
-            FileStream fs = new FileStream(filePath, FileMode.Append, FileAccess.Write);
-
+            List<Historique> jsonList = new List<Historique>();
             foreach (var item in histEntities)
             {
                 if(!item.Devise.Equals("EUR"))
                 {
                     // On fait la conversion en euros avec les taux qu'on récupère de la requête
-                    item.Montant = item.Montant * tauxDevise[item.Devise].Value<decimal>();
+                    item.Montant = item.Montant * tauxDevise[item.Devise];
                 }
-                var jsonInfo = JsonSerializer.Serialize<Historique>(item);
-                JsonSerializer.Serialize(fs, item);
+                jsonList.Add(item);
             }
 
-            fs.Close();
+            // Destination du fichier JSON
+            string filePath = Path.Combine(Directory.GetCurrentDirectory(), "Exports\\export.json");
+            using (FileStream fs = new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.Write))
+            {
+                await JsonSerializer.SerializeAsync(fs, jsonList, new JsonSerializerOptions { WriteIndented = true });
+            }
 
             return 0;
         }

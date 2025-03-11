@@ -13,6 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ProjetDotnet.Generation\ProjetDotnet.Generation.csproj" />
     <ProjectReference Include="..\ProjetDotnet.Server.Data\ProjetDotnet.Server.Data.csproj" />
   </ItemGroup>
 

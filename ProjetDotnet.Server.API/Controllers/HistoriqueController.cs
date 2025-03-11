@@ -39,7 +39,7 @@ namespace ProjetDotnet.Server.API.Controllers
 
         // Génère un fichier JSON de l'historique des enregistrements validés
         [HttpPost("jsonHistory")]
-        public async Task<ActionResult<int>> GenerateHistoriqueJson([FromBody] JObject tauxDevises)
+        public async Task<ActionResult<int>> GenerateHistoriqueJson([FromBody] Dictionary<string, decimal> tauxDevises)
         {
             try
             {

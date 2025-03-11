@@ -1,0 +1,19 @@
+[
+  {
+    "Name": "All App",
+    "Projects": [
+      {
+        "Path": "ProjetDotnet.Generation\\ProjetDotnet.Generation.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "ProjetDotnet.Server.API\\ProjetDotnet.Server.API.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "ProjetDotnet.Client.App\\ProjetDotnet.Client.App.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]

@@ -12,7 +12,7 @@ namespace ProjetDotnet.Generation
         {
             List<Enregistrements> enregistrements = new List<Enregistrements>();
 
-            for (int i =0; i<10; i++)
+            for (int i =0; i<100; i++)
             {
                 enregistrements.Add(new Enregistrements(
                     GenerateRandomCardNumber(),
@@ -26,7 +26,7 @@ namespace ProjetDotnet.Generation
             string projectRoot = Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent.FullName;
             string solutionRoot = Directory.GetParent(projectRoot).FullName;
             string directoryPath = Path.Combine(solutionRoot, "ProjetDotnet.Generation", "Import");
-            Console.WriteLine(directoryPath);
+
             if (!Directory.Exists(directoryPath))
             {
                 Directory.CreateDirectory(directoryPath);
