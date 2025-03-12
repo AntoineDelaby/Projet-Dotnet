@@ -43,6 +43,9 @@ namespace ProjetDotnet.Client.App
                 tabControl1.TabPages.Insert(1, hiddenCompte);
                 tabControl1.TabPages.Insert(2, hiddenJSON);
                 tabControl1.TabPages.Insert(3, hiddenDate);
+                indentBox.Enabled = false;
+                mdpBox.Enabled = false;
+                button1.Enabled = false;
             }
             else
             {

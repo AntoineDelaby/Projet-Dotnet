@@ -106,12 +106,13 @@
             // label14
             // 
             label14.AutoSize = true;
+            label14.Font = new Font("Segoe UI", 16F);
             label14.ForeColor = Color.Green;
-            label14.Location = new Point(244, 321);
+            label14.Location = new Point(282, 313);
             label14.Name = "label14";
-            label14.Size = new Size(39, 15);
+            label14.Size = new Size(195, 30);
             label14.TabIndex = 7;
-            label14.Text = "blabla";
+            label14.Text = "Connexion réussie!";
             // 
             // label13
             // 
