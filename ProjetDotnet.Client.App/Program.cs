@@ -9,7 +9,7 @@ namespace ProjetDotnet.Client.App
         ///  The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main(string[] args)
+        static void  Main(string[] args)
         {
 
             ApplicationConfiguration.Initialize();
@@ -23,9 +23,8 @@ namespace ProjetDotnet.Client.App
                        "12, rue des Oliviers", "", "94000", "Creteil",
                        "Daniel", ESexe.M, new DateTime(1985, 11, 12));
 
-                ClientRepository repo = new ClientRepository();
-                repo.InsertClient(client1);
-                Console.ReadLine();
+               
+                
 
                 // Clients particuliers 3 valide
                 ClientParticulier client3 = new ClientParticulier(3, "BODIN", "bodin@gmail.com",
