@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
             label14 = new Label();
@@ -44,11 +44,12 @@
             dataGridView1 = new DataGridView();
             label4 = new Label();
             tabPage3 = new TabPage();
+            label15 = new Label();
             button2 = new Button();
             groupBox1 = new GroupBox();
-            textBox5 = new TextBox();
-            textBox4 = new TextBox();
-            textBox3 = new TextBox();
+            yenBox = new TextBox();
+            livreBox = new TextBox();
+            dollarsBox = new TextBox();
             label9 = new Label();
             label8 = new Label();
             label7 = new Label();
@@ -62,6 +63,7 @@
             monthCalendar2 = new MonthCalendar();
             monthCalendar1 = new MonthCalendar();
             label10 = new Label();
+            label16 = new Label();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tabPage2.SuspendLayout();
@@ -106,12 +108,13 @@
             // label14
             // 
             label14.AutoSize = true;
+            label14.Font = new Font("Segoe UI", 16F);
             label14.ForeColor = Color.Green;
-            label14.Location = new Point(244, 321);
+            label14.Location = new Point(282, 313);
             label14.Name = "label14";
-            label14.Size = new Size(39, 15);
+            label14.Size = new Size(195, 30);
             label14.TabIndex = 7;
-            label14.Text = "blabla";
+            label14.Text = "Connexion réussie!";
             // 
             // label13
             // 
@@ -190,23 +193,23 @@
             // 
             // dataGridView1
             // 
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = SystemColors.Control;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = SystemColors.Window;
-            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle4.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
-            dataGridView1.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             dataGridView1.Location = new Point(85, 84);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.Size = new Size(603, 268);
@@ -224,6 +227,8 @@
             // 
             // tabPage3
             // 
+            tabPage3.Controls.Add(label16);
+            tabPage3.Controls.Add(label15);
             tabPage3.Controls.Add(button2);
             tabPage3.Controls.Add(groupBox1);
             tabPage3.Controls.Add(label5);
@@ -235,6 +240,16 @@
             tabPage3.Text = "Mettre à jour solde";
             tabPage3.UseVisualStyleBackColor = true;
             // 
+            // label15
+            // 
+            label15.AutoSize = true;
+            label15.ForeColor = Color.Red;
+            label15.Location = new Point(174, 79);
+            label15.Name = "label15";
+            label15.Size = new Size(44, 15);
+            label15.TabIndex = 3;
+            label15.Text = "label15";
+            // 
             // button2
             // 
             button2.Location = new Point(328, 299);
@@ -243,12 +258,13 @@
             button2.TabIndex = 2;
             button2.Text = "Mettre à jour";
             button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(textBox5);
-            groupBox1.Controls.Add(textBox4);
-            groupBox1.Controls.Add(textBox3);
+            groupBox1.Controls.Add(yenBox);
+            groupBox1.Controls.Add(livreBox);
+            groupBox1.Controls.Add(dollarsBox);
             groupBox1.Controls.Add(label9);
             groupBox1.Controls.Add(label8);
             groupBox1.Controls.Add(label7);
@@ -259,26 +275,26 @@
             groupBox1.TabIndex = 1;
             groupBox1.TabStop = false;
             // 
-            // textBox5
+            // yenBox
             // 
-            textBox5.Location = new Point(128, 142);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(216, 23);
-            textBox5.TabIndex = 6;
+            yenBox.Location = new Point(128, 142);
+            yenBox.Name = "yenBox";
+            yenBox.Size = new Size(216, 23);
+            yenBox.TabIndex = 6;
             // 
-            // textBox4
+            // livreBox
             // 
-            textBox4.Location = new Point(128, 100);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(216, 23);
-            textBox4.TabIndex = 5;
+            livreBox.Location = new Point(128, 100);
+            livreBox.Name = "livreBox";
+            livreBox.Size = new Size(216, 23);
+            livreBox.TabIndex = 5;
             // 
-            // textBox3
+            // dollarsBox
             // 
-            textBox3.Location = new Point(128, 60);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(216, 23);
-            textBox3.TabIndex = 4;
+            dollarsBox.Location = new Point(128, 60);
+            dollarsBox.Name = "dollarsBox";
+            dollarsBox.Size = new Size(216, 23);
+            dollarsBox.TabIndex = 4;
             // 
             // label9
             // 
@@ -402,6 +418,16 @@
             label10.TabIndex = 0;
             label10.Text = "Transaction entre deux dates";
             // 
+            // label16
+            // 
+            label16.AutoSize = true;
+            label16.ForeColor = Color.Green;
+            label16.Location = new Point(174, 345);
+            label16.Name = "label16";
+            label16.Size = new Size(44, 15);
+            label16.TabIndex = 4;
+            label16.Text = "label16";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -445,11 +471,11 @@
         private Label label7;
         private Label label6;
         private Label label5;
-        private TextBox textBox4;
-        private TextBox textBox3;
+        private TextBox livreBox;
+        private TextBox dollarsBox;
         private Label label9;
         private Button button2;
-        private TextBox textBox5;
+        private TextBox yenBox;
         private Button button4;
         private Button button3;
         private Label label12;
@@ -459,5 +485,7 @@
         private Label label10;
         private Label label13;
         private Label label14;
+        private Label label15;
+        private Label label16;
     }
 }
