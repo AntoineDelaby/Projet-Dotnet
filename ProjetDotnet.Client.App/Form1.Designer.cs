@@ -32,9 +32,10 @@
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
+            label13 = new Label();
             button1 = new Button();
-            textBox2 = new TextBox();
-            textBox1 = new TextBox();
+            mdpBox = new TextBox();
+            indentBox = new TextBox();
             label3 = new Label();
             label2 = new Label();
             label1 = new Label();
@@ -60,6 +61,7 @@
             monthCalendar2 = new MonthCalendar();
             monthCalendar1 = new MonthCalendar();
             label10 = new Label();
+            label14 = new Label();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tabPage2.SuspendLayout();
@@ -85,9 +87,11 @@
             // 
             // tabPage1
             // 
+            tabPage1.Controls.Add(label14);
+            tabPage1.Controls.Add(label13);
             tabPage1.Controls.Add(button1);
-            tabPage1.Controls.Add(textBox2);
-            tabPage1.Controls.Add(textBox1);
+            tabPage1.Controls.Add(mdpBox);
+            tabPage1.Controls.Add(indentBox);
             tabPage1.Controls.Add(label3);
             tabPage1.Controls.Add(label2);
             tabPage1.Controls.Add(label1);
@@ -99,9 +103,19 @@
             tabPage1.Text = "Connexion";
             tabPage1.UseVisualStyleBackColor = true;
             // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.ForeColor = Color.Red;
+            label13.Location = new Point(244, 223);
+            label13.Name = "label13";
+            label13.Size = new Size(39, 15);
+            label13.TabIndex = 6;
+            label13.Text = "blabla";
+            // 
             // button1
             // 
-            button1.Location = new Point(305, 242);
+            button1.Location = new Point(306, 266);
             button1.Name = "button1";
             button1.Size = new Size(123, 23);
             button1.TabIndex = 5;
@@ -109,19 +123,20 @@
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
-            // textBox2
+            // mdpBox
             // 
-            textBox2.Location = new Point(244, 157);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(309, 23);
-            textBox2.TabIndex = 4;
+            mdpBox.Location = new Point(244, 157);
+            mdpBox.Name = "mdpBox";
+            mdpBox.Size = new Size(309, 23);
+            mdpBox.TabIndex = 4;
+            mdpBox.UseSystemPasswordChar = true;
             // 
-            // textBox1
+            // indentBox
             // 
-            textBox1.Location = new Point(244, 92);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(309, 23);
-            textBox1.TabIndex = 3;
+            indentBox.Location = new Point(244, 92);
+            indentBox.Name = "indentBox";
+            indentBox.Size = new Size(309, 23);
+            indentBox.TabIndex = 3;
             // 
             // label3
             // 
@@ -377,6 +392,16 @@
             label10.TabIndex = 0;
             label10.Text = "Transaction entre deux dates";
             // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.ForeColor = Color.Green;
+            label14.Location = new Point(244, 321);
+            label14.Name = "label14";
+            label14.Size = new Size(39, 15);
+            label14.TabIndex = 7;
+            label14.Text = "blabla";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -408,8 +433,8 @@
         private TabPage tabPage3;
         private TabPage tabPage4;
         private Button button1;
-        private TextBox textBox2;
-        private TextBox textBox1;
+        private TextBox mdpBox;
+        private TextBox indentBox;
         private Label label3;
         private Label label2;
         private Label label1;
@@ -432,5 +457,7 @@
         private MonthCalendar monthCalendar2;
         private MonthCalendar monthCalendar1;
         private Label label10;
+        private Label label13;
+        private Label label14;
     }
 }

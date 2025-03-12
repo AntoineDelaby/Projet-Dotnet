@@ -26,13 +26,30 @@ namespace ProjetDotnet.Client.App
 
             hiddenCompte = tabControl1.TabPages[1];
             tabControl1.TabPages.Remove(tabControl1.TabPages[1]);
+
+            label13.Text = "";
+            label14.Text = "";
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            tabControl1.TabPages.Insert(1, hiddenCompte);
-            tabControl1.TabPages.Insert(2, hiddenJSON);
-            tabControl1.TabPages.Insert(3, hiddenDate);
+            string username = indentBox.Text;
+            string password = mdpBox.Text;
+
+            if (username == "admin"  && password == "admin")
+            {
+                label13.Text = "";
+                label14.Text = "Connexion réussie !";
+                tabControl1.TabPages.Insert(1, hiddenCompte);
+                tabControl1.TabPages.Insert(2, hiddenJSON);
+                tabControl1.TabPages.Insert(3, hiddenDate);
+            }
+            else
+            {
+                label13.Text = "Nom d'utilisateur ou mot de passe incorrect";
+            }
+
+            
         }
     }
 }
