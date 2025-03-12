@@ -21,6 +21,8 @@ namespace ProjetDotnet.Client.App
 
         public DateTime DateDeNaissance { get; set; }
 
+        public ClientParticulier() { }
+
         public ESexe Sexe
         {
             get { return sexe; }
@@ -61,20 +63,14 @@ namespace ProjetDotnet.Client.App
 
 
         {
-            this.Prenom = prenom;
-            this.Sexe = sexe;
-            this.DateDeNaissance = dateDeNaissance;
+            Prenom = prenom;
+            Sexe = sexe;
+            DateDeNaissance = dateDeNaissance;
 
 
         }
 
-        public override void AfficherInfos()
-        {
-            Console.WriteLine($"ID: {Identifiant}, Nom: {Nom}, Mail: {Mail}");
-
-            Console.WriteLine($"Client Particulier: {Nom} {Prenom}, Sexe: {Sexe}, Date de Naissance: {DateDeNaissance.ToShortDateString()}");
-            AfficherAdresse();
-        }
+    
     }
 }
 
