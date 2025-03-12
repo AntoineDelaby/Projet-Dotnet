@@ -26,4 +26,8 @@
     <ProjectReference Include="..\ProjetDotnet.Server.Data\ProjetDotnet.Server.Data.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="XML\" />
+  </ItemGroup>
+
 </Project>
