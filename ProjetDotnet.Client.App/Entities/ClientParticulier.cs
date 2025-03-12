@@ -28,10 +28,10 @@ namespace ProjetDotnet.Client.App
             get { return sexe; }
             set
             {
-                if (sexe is not (ESexe)'M' and not (ESexe)'F')
-                {
-                    throw new ClientsException(ClientsExceptionType.InvalidSex);
-                }
+                //if (sexe is not (ESexe)'M' and not (ESexe)'F')
+                //{
+                //    throw new ClientsException(ClientsExceptionType.InvalidSex);
+                //}
 
 
                 sexe = value;
@@ -44,11 +44,11 @@ namespace ProjetDotnet.Client.App
             get { return prenom; }
             set
             {
-                prenom = value;
-                if (prenom.Length > 50)
-                {
-                    throw new ClientsException(ClientsExceptionType.InvalidNom);
-                }
+                //prenom = value;
+                //if (prenom.Length > 50)
+                //{
+                //    throw new ClientsException(ClientsExceptionType.InvalidNom);
+                //}
 
                 prenom = value;
 

@@ -32,10 +32,10 @@ namespace ProjetDotnet.Client.App
             set
             {
 
-                if (value.Length > 50)
-                {
-                    throw new ClientsException(ClientsExceptionType.InvalidNom);
-                }
+                //if (value.Length > 50)
+                //{
+                //    throw new ClientsException(ClientsExceptionType.InvalidNom);
+                //}
 
                 nom = value;
             }
@@ -48,10 +48,10 @@ namespace ProjetDotnet.Client.App
             set
             {
 
-                if (!value.Contains("@"))
-                {
-                    throw new ClientsException(ClientsExceptionType.InvalidMail);
-                }
+                //if (!value.Contains("@"))
+                //{
+                //    throw new ClientsException(ClientsExceptionType.InvalidMail);
+                //}
 
                 mail = value;
             }

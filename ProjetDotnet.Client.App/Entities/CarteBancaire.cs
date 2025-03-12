@@ -14,15 +14,14 @@ namespace ProjetDotnet.Client.App
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Identifiant { get; set; }
         public string NumeroCarte { get; set; }
-        
-        
+        public string CompteBancaireId { get; set; }
+
+
         public CarteBancaire() { }
         public CarteBancaire(string numeroCarte, int identifiant)
         {   
             NumeroCarte = numeroCarte;
             Identifiant = identifiant;
-
-
         }
 
     }
