@@ -15,11 +15,9 @@ namespace ProjetDotnet.Client.App
         public Form1()
         {
             InitializeComponent();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
+            //tabPage2.Hide();
+            //tabPage3.Hide();
+            //tabPage4.Hide();
         }
     }
 }
