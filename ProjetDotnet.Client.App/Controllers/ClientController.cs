@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ProjetDotnet.Server.Data;
 using ProjetDotnet.Server.Data.Context;
-using ProjetDotnet.Server.Data.Migrations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -61,13 +60,26 @@ namespace ProjetDotnet.Client.App.Controllers
             }
         }
 
-        //public async Task<List<Clients>> getAll()
-        //{
-        //    using var context = new APIDbContext();
-        //    var historique = await context.Historique
-        //        .ToListAsync<Historique>();
+        public async Task<string> GetAllAccountsWithClients()
+        {
+            using var context = new ClientDBContext();
 
-        //    return historique;
-        //}
+            var result = await context.CompteBancaire
+                .Include(cb => cb.Client)  
+                .Include(cb => cb.CarteBancaires)
+                .Select(cb => new
+                {
+                    Identifiant_Client = cb.ClientId,
+                    Nom_Client = cb.Client.Nom,
+                    Id_CompteBancaire = cb.Id,
+                    DateOuverture_CompteBancaire = cb.DateOuverture,
+                    Solde_CompteBancaire = cb.Solde,
+                    CartesBancaires = cb.CarteBancaires.Select(c => c.NumeroCarte).ToList()
+                })
+                .ToListAsync();
+
+            // Sérialisation en JSON
+            return JsonSerializer.Serialize(result, new JsonSerializerOptions { WriteIndented = true });
+        }
     }
 }
