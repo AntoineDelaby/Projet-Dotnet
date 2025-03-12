@@ -93,6 +93,9 @@ namespace ProjetDotnet.Client.App
             {
                 label16.Text = "Historique JSON généré avec succès";
                 button2.Enabled = true;
+                dollarsBox.Text = "";
+                livreBox.Text = "";
+                yenBox.Text = "";
             }
             else
             {
