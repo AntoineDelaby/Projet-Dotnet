@@ -21,6 +21,8 @@ namespace ProjetDotnet.Client.App
         public Form1()
         {
             InitializeComponent();
+            indentBox.KeyDown += new KeyEventHandler(Enter_KeyDown);
+            mdpBox.KeyDown += new KeyEventHandler(Enter_KeyDown);
             onglet();
             initialisation_label();
             initialiastion_data_view();        
@@ -87,6 +89,21 @@ namespace ProjetDotnet.Client.App
                 dataGridView1.Columns["NumeroCarte"].Visible = false;
 
                 dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            }
+        }
+
+        private void Enter_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter && tabControl1.SelectedIndex == 0)
+            {
+                if (tabControl1.SelectedIndex == 0)
+                {
+                    // Simuler un clic sur button1
+                    button1.PerformClick();
+
+                    // Empêcher le  "ding" de Windows
+                    e.SuppressKeyPress = true;
+                }
             }
         }
 
