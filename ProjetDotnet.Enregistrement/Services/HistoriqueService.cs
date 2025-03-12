@@ -112,7 +112,19 @@ namespace ProjetDotnet.Server.API.Services
             }
 
             // Destination du fichier JSON
-            string filePath = Path.Combine(Directory.GetCurrentDirectory(), "Exports\\export.json");
+            // Destination sur le serveur
+            //string filePath = Path.Combine(Directory.GetCurrentDirectory(), "Exports\\export.json");
+            // Destination sur le client
+            string projectRoot = Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent.FullName;
+            string solutionRoot = Directory.GetParent(projectRoot).FullName;
+            string directoryPath = Path.Combine(solutionRoot, "ProjetDotnet.Client.App", "Json");
+
+            if (!Directory.Exists(directoryPath))
+            {
+                Directory.CreateDirectory(directoryPath);
+            }
+
+            string filePath = Path.Combine(directoryPath, "export.json");
 
             // Suppression du fichier JSON précédent
             if (File.Exists(filePath))
