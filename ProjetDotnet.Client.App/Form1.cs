@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -29,6 +30,8 @@ namespace ProjetDotnet.Client.App
 
             label13.Text = "";
             label14.Text = "";
+            label15.Text = "";
+            label16.Text = "";
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -55,9 +58,47 @@ namespace ProjetDotnet.Client.App
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private async void button2_Click(object sender, EventArgs e)
         {
+            button2.Enabled = false;
+            label15.Text = "";
+            label16.Text = "";
 
-        }
+            string apiUrl = "https://localhost:7075/api/historique/jsonHistory";
+            var httpClient = new HttpClient();
+
+            decimal tauxDollars, tauxLivre, tauxYen;
+
+            if (!decimal.TryParse(dollarsBox.Text, out tauxDollars) ||
+                !decimal.TryParse(livreBox.Text, out tauxLivre) ||
+                !decimal.TryParse(yenBox.Text, out tauxYen))
+            {
+                label15.Text = "Veuillez saisir des valeurs numériques valides pour les taux de change.";
+                return;
+            }
+
+            var tauxDevises = new Dictionary<string, decimal>
+            {
+                { "USD", tauxDollars },
+                { "LBP", tauxLivre },
+                { "JPY", tauxYen }
+            };
+
+            string jsonContent = JsonSerializer.Serialize(tauxDevises);
+            var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
+
+            HttpResponseMessage response = await httpClient.PostAsync(apiUrl, content);
+
+            if (response.IsSuccessStatusCode)
+            {
+                label16.Text = "Historique JSON généré avec succès";
+                button2.Enabled = true;
+            }
+            else
+            {
+                string errorMessage = await response.Content.ReadAsStringAsync();    
+                label15.Text = $"Erreur : {errorMessage}";
+            }
+        } 
     }
 }
