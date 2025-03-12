@@ -36,7 +36,7 @@ namespace ProjetDotnet.Client.App
             string username = indentBox.Text;
             string password = mdpBox.Text;
 
-            if (username == "admin"  && password == "admin")
+            if (username == "admin" && password == "admin")
             {
                 label13.Text = "";
                 label14.Text = "Connexion réussie !";
@@ -49,7 +49,12 @@ namespace ProjetDotnet.Client.App
                 label13.Text = "Nom d'utilisateur ou mot de passe incorrect";
             }
 
-            
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
