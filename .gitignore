@@ -52,3 +52,4 @@
 *./bin/*
 /ProjetDotnet.Generation/Import/*
 /ProjetDotnet.Server.API/Exports/*
+/ProjetDotnet.Client.App/Json
