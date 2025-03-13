@@ -56,6 +56,8 @@
             label6 = new Label();
             label5 = new Label();
             tabPage4 = new TabPage();
+            label15 = new Label();
+            comboBox1 = new ComboBox();
             button4 = new Button();
             button3 = new Button();
             label12 = new Label();
@@ -64,6 +66,7 @@
             monthCalendar1 = new MonthCalendar();
             label10 = new Label();
             label16 = new Label();
+            labelError = new Label();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tabPage2.SuspendLayout();
@@ -345,6 +348,9 @@
             // 
             // tabPage4
             // 
+            tabPage4.Controls.Add(labelError);
+            tabPage4.Controls.Add(label15);
+            tabPage4.Controls.Add(comboBox1);
             tabPage4.Controls.Add(button4);
             tabPage4.Controls.Add(button3);
             tabPage4.Controls.Add(label12);
@@ -360,18 +366,36 @@
             tabPage4.Text = "Transaction entre deux dates";
             tabPage4.UseVisualStyleBackColor = true;
             // 
+            // label15
+            // 
+            label15.AutoSize = true;
+            label15.Location = new Point(42, 311);
+            label15.Name = "label15";
+            label15.Size = new Size(190, 15);
+            label15.TabIndex = 8;
+            label15.Text = "Sélectionner un compte bancaire : ";
+            // 
+            // comboBox1
+            // 
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Location = new Point(238, 308);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(121, 23);
+            comboBox1.TabIndex = 7;
+            // 
             // button4
             // 
-            button4.Location = new Point(315, 341);
+            button4.Location = new Point(584, 363);
             button4.Name = "button4";
             button4.Size = new Size(128, 23);
             button4.TabIndex = 6;
-            button4.Text = "Générez: XML";
+            button4.Text = "Générer rapport XML";
             button4.UseVisualStyleBackColor = true;
+            button4.Click += button4_Click;
             // 
             // button3
             // 
-            button3.Location = new Point(315, 303);
+            button3.Location = new Point(584, 325);
             button3.Name = "button3";
             button3.Size = new Size(128, 23);
             button3.TabIndex = 5;
@@ -399,12 +423,14 @@
             // monthCalendar2
             // 
             monthCalendar2.Location = new Point(485, 105);
+            monthCalendar2.MaxSelectionCount = 1;
             monthCalendar2.Name = "monthCalendar2";
             monthCalendar2.TabIndex = 2;
             // 
             // monthCalendar1
             // 
             monthCalendar1.Location = new Point(52, 105);
+            monthCalendar1.MaxSelectionCount = 1;
             monthCalendar1.Name = "monthCalendar1";
             monthCalendar1.TabIndex = 1;
             // 
@@ -427,6 +453,16 @@
             label16.Size = new Size(44, 15);
             label16.TabIndex = 4;
             label16.Text = "label16";
+            // 
+            // labelError
+            // 
+            labelError.AutoSize = true;
+            labelError.ForeColor = Color.Red;
+            labelError.Location = new Point(352, 66);
+            labelError.Name = "labelError";
+            labelError.Size = new Size(38, 15);
+            labelError.TabIndex = 9;
+            labelError.Text = "Erreur";
             // 
             // Form1
             // 
@@ -487,5 +523,8 @@
         private Label label14;
         private Label label15;
         private Label label16;
+        private ComboBox comboBox1;
+        private Label label15;
+        private Label labelError;
     }
 }

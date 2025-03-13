@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ProjetDotnet.Client.App.Controllers;
+using ProjetDotnet.Client.App.Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,6 +18,8 @@ namespace ProjetDotnet.Client.App
         private TabPage hiddenCompte;
         private TabPage hiddenJSON;
         private TabPage hiddenDate;
+        private readonly ClientController clientController;
+
         public Form1()
         {
             InitializeComponent();
@@ -32,6 +36,19 @@ namespace ProjetDotnet.Client.App
             label14.Text = "";
             label15.Text = "";
             label16.Text = "";
+            labelError.Text = "";
+
+            clientController = new ClientController();
+            fillComboBox();
+        }
+
+        private async void fillComboBox()
+        {
+            List<CompteBancaire> comptes = await clientController.getAll();
+            foreach (var item in comptes)
+            {
+                comboBox1.Items.Add(item.Id);
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -103,5 +120,42 @@ namespace ProjetDotnet.Client.App
                 label15.Text = $"Erreur : {errorMessage}";
             }
         } 
+
+        }
+
+        private async void button4_Click(object sender, EventArgs e)
+        {
+            // Réinitialisation du label d'erreurs
+            labelError.Text = "";
+
+            // Récupération des données
+            DateTime date1 = monthCalendar1.SelectionRange.Start;
+            DateTime date2 = monthCalendar2.SelectionRange.Start;
+            string compteBancaireId = "";
+
+            if(comboBox1.SelectedItem == null)
+            {
+                labelError.Text = "Veuillez sélectionner un compte";
+                return;
+            }
+
+            if(date1 == null || date2 == null)
+            {
+                labelError.Text = "Veuillez sélectionner une date de début et une date de fin";
+                return;
+            }
+
+            if(date1 > date2)
+            {
+                labelError.Text = "La date de début doit être antérieure à la date de fin";
+                return;
+            }
+
+            compteBancaireId = comboBox1.SelectedItem.ToString();
+            CompteBancaire compte = await clientController.getById(compteBancaireId);
+
+            string fileName = $"transacitons_{compteBancaireId}_{date1.ToString("yyyy-MM-dd")}_{date2.ToString("yyyy-MM-dd")}.xml";
+            await clientController.GenrerateXMLReport(fileName, await clientController.GetTransactionsBetweenDates(compte.CarteBancaires, date1, date2));
+        }
     }
 }

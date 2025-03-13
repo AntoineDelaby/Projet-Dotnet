@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using ProjetDotnet.Client.App.Entities;
 using ProjetDotnet.Server.Data;
 using ProjetDotnet.Server.Data.Context;
 using ProjetDotnet.Server.Data.Migrations;
@@ -8,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 namespace ProjetDotnet.Client.App.Controllers
@@ -21,8 +23,8 @@ namespace ProjetDotnet.Client.App.Controllers
         // Initialisation de la base de données
         private void InitializeDatabase()
         {
-            //using var context = new ClientDbContext();
-            //context.Database.EnsureCreated();
+            using var context = new ClientDBContext();
+            context.Database.EnsureCreated();
         }
 
         //Récupère la liste des transactions effectuées par un compte bancaire
@@ -43,7 +45,7 @@ namespace ProjetDotnet.Client.App.Controllers
             }
         }
 
-        public async Task<List<Historique>?> GetTransactionsBetweenDates(List<CarteBancaire> cartes, DateTime begDate, DateTime endDate)
+        public async Task<List<Historique>?> GetTransactionsBetweenDates(ICollection<CarteBancaire> cartes, DateTime begDate, DateTime endDate)
         {
             // Chemin d'accès au fichier json
             string projectRoot = Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent.FullName;
@@ -55,19 +57,52 @@ namespace ProjetDotnet.Client.App.Controllers
                 List<Historique>? historique = await JsonSerializer.DeserializeAsync<List<Historique>>(fs);
                 return historique
                     .Where<Historique>(h => cartes.Any(c => c.NumeroCarte == h.NumCarte)
-                                        && h.DateOperation > begDate 
-                                        && h.DateOperation < endDate)
+                                        && h.DateOperation >= begDate 
+                                        && h.DateOperation <= endDate)
                     .ToList<Historique>();
             }
         }
 
-        //public async Task<List<Clients>> getAll()
-        //{
-        //    using var context = new APIDbContext();
-        //    var historique = await context.Historique
-        //        .ToListAsync<Historique>();
+        public async Task<int> GenrerateXMLReport(string fileName, List<Historique> data)
+        {
+            // Chemin d'accès au fichier XML
+            // fileName = transacitons_{begDate}_{endDate}.xml
+            string projectRoot = Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent.FullName;
+            string solutionRoot = Directory.GetParent(projectRoot).FullName;
+            string filePath = Path.Combine(solutionRoot, "ProjetDotnet.Client.App", "XML\\", fileName);
 
-        //    return historique;
-        //}
+            // Si le fichier existe déjà, on le supprime (Plusieurs demandes de rapport dans la même journée)
+            if (File.Exists(filePath))
+            {
+                File.Delete(filePath);
+            }
+
+            XmlSerializer serializer = new XmlSerializer(typeof(List<Historique>));
+            using (StreamWriter writer = new StreamWriter(filePath, false, Encoding.UTF8))
+            {
+                serializer.Serialize(writer, data);
+            }
+
+            return 0;
+        }
+
+        public async Task<List<CompteBancaire>> getAll()
+        {
+            using var context = new ClientDBContext();
+            var comptes = await context.CompteBancaire
+                .ToListAsync<CompteBancaire>();
+
+            return comptes;
+        }
+
+        public async Task<CompteBancaire> getById(string id)
+        {
+            using var context = new ClientDBContext();
+            var compte = await context.CompteBancaire
+                .Include(c => c.CarteBancaires)
+                .Where(c => c.Id == id)
+                .FirstOrDefaultAsync<CompteBancaire>();
+            return compte;
+        }
     }
 }

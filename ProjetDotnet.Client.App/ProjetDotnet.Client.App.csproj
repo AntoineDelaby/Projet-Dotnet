@@ -27,7 +27,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Json\" />
+    <Folder Include="XML\" />
   </ItemGroup>
 
 </Project>
