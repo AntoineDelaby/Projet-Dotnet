@@ -331,7 +331,7 @@ namespace ProjetDotnet.Client.App
             modelBuilder.Entity<CompteBancaire>().HasData(
                 new CompteBancaire
                 {
-                    Id = "3-2-BO-20250312-PR",
+                    Id = "3-2-BO-20250312-PE",
                     DateOuverture = new DateTime(2025, 03, 12),
                     Solde = 1000,
                     ClientId = 3
