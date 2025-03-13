@@ -5,7 +5,10 @@ internal class Program
 {
     private static void Main(string[] args)
     {
+        // Attente de 10 secondes avant de faire la première génération du fichier XML
+        System.Threading.Thread.Sleep(10 * 1000);
         CreateXml();
+
         System.Timers.Timer aTimer = new System.Timers.Timer(60 * 1000);
         //System.Timers.Timer aTimer = new System.Timers.Timer(60 * 60 * 1000);
         aTimer.Elapsed += new ElapsedEventHandler(OnTimedEvent);
