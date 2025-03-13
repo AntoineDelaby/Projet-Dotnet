@@ -29,6 +29,7 @@ namespace ProjetDotnet.Client.App
             onglet();
             initialisation_label();
             initialiastion_data_view();
+            //getTaux();
 
             clientController = new ClientController();
             fillComboBox();
@@ -55,6 +56,9 @@ namespace ProjetDotnet.Client.App
             label17.Text = "";
             label16.Text = "";
             labelError.Text = "";
+            dollarsBox.Enabled = false;
+            livreBox.Enabled = false;
+            yenBox.Enabled = false;
         }
 
         public async void initialiastion_data_view()
@@ -83,19 +87,37 @@ namespace ProjetDotnet.Client.App
 
 
 
-                  dataGridView1.Rows.Add(new string[]
-                    {
+                    dataGridView1.Rows.Add(new string[]
+                      {
                     identifiantClient,
                     nomClient,
                     idCompteBancaire,
                     dateOuverture,
                     solde.ToString(),
                     numeroCarte
-                    });
+                      });
                 }
                 dataGridView1.Columns["NumeroCarte"].Visible = false;
 
                 dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            }
+        }
+
+        private async void getTaux()
+        {
+            var controller = new ClientController();
+
+            try
+            {
+                var tauxDeChange = await controller.GetTauxDeChange();
+
+                dollarsBox.Text = $"{tauxDeChange["USD"]}";
+                livreBox.Text = $"{tauxDeChange["GBP"]}";
+                yenBox.Text = $"{tauxDeChange["JPY"]}";
+            }
+            catch (Exception ex)
+            {
+                label17.Text = $"Erreur : {ex.Message}";
             }
         }
 
@@ -168,7 +190,7 @@ namespace ProjetDotnet.Client.App
             var tauxDevises = new Dictionary<string, decimal>
             {
                 { "USD", tauxDollars },
-                { "LBP", tauxLivre },
+                { "GBP", tauxLivre },
                 { "JPY", tauxYen }
             };
 
@@ -181,9 +203,6 @@ namespace ProjetDotnet.Client.App
             {
                 label16.Text = "Fichier JSON généré avec succès";
                 button2.Enabled = true;
-                dollarsBox.Text = "";
-                livreBox.Text = "";
-                yenBox.Text = "";
                 maj_solde();
             }
             else
@@ -192,7 +211,7 @@ namespace ProjetDotnet.Client.App
                 label17.Text = $"Erreur : {errorMessage}";
                 button2.Enabled = true;
             }
-        } 
+        }
 
         public async void maj_solde()
         {
@@ -224,7 +243,7 @@ namespace ProjetDotnet.Client.App
                         if (row.Cells["Id_CompteBancaire"].Value != null)
                         {
                             string idCompte = row.Cells["Id_CompteBancaire"].Value.ToString();
-                           
+
                             string numeroCarteStockee = row.Cells["NumeroCarte"].Value?.ToString();
 
                             List<string> cartesAssociees = JsonSerializer.Deserialize<List<string>>(numeroCarteStockee);
@@ -267,19 +286,19 @@ namespace ProjetDotnet.Client.App
             DateTime date2 = monthCalendar2.SelectionRange.Start;
             string compteBancaireId = "";
 
-            if(comboBox1.SelectedItem == null)
+            if (comboBox1.SelectedItem == null)
             {
                 labelError.Text = "Veuillez sélectionner un compte";
                 return;
             }
 
-            if(date1 == null || date2 == null)
+            if (date1 == null || date2 == null)
             {
                 labelError.Text = "Veuillez sélectionner une date de début et une date de fin";
                 return;
             }
 
-            if(date1 > date2)
+            if (date1 > date2)
             {
                 labelError.Text = "La date de début doit être antérieure à la date de fin";
                 return;
@@ -291,5 +310,11 @@ namespace ProjetDotnet.Client.App
             string fileName = $"transacitons_{compteBancaireId}_{date1.ToString("yyyy-MM-dd")}_{date2.ToString("yyyy-MM-dd")}.xml";
             await clientController.GenrerateXMLReport(fileName, await clientController.GetTransactionsBetweenDates(compte.CarteBancaires, date1, date2));
         }
+
+        private async void button5_Click(object sender, EventArgs e)
+        {
+            getTaux();
+        }
+
     }
 }

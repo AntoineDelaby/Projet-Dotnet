@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using ProjetDotnet.Client.App.Entities;
+using ProjetDotnet.Client.App.Services;
 using ProjetDotnet.Server.Data;
 using ProjetDotnet.Server.Data.Context;
 using System;
@@ -9,6 +10,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
+using static ProjetDotnet.Client.App.Form1;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 namespace ProjetDotnet.Client.App.Controllers
@@ -124,6 +126,12 @@ namespace ProjetDotnet.Client.App.Controllers
                 .Where(c => c.Id == id)
                 .FirstOrDefaultAsync<CompteBancaire>();
             return compte;
+        }
+
+        public async Task<Dictionary<string, decimal>> GetTauxDeChange()
+        {
+            var service = new TauxDeChangeService();
+            return await service.GetTauxDeChangeAsync();
         }
     }
 }
