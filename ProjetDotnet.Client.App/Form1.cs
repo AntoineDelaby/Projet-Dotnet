@@ -204,7 +204,8 @@ namespace ProjetDotnet.Client.App
                 label16.Text = "Fichier JSON généré avec succès";
                 button2.Enabled = true;
                 maj_solde();
-                tabControl1.TabPages.Insert(3, hiddenDate);
+                if (tabControl1.TabPages.Count <= 3)
+                    tabControl1.TabPages.Insert(3, hiddenDate);
             }
             else
             {
