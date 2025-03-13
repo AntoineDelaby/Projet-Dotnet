@@ -26,17 +26,25 @@ namespace ProjetDotnet.Generation
             string projectRoot = Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent.FullName;
             string solutionRoot = Directory.GetParent(projectRoot).FullName;
             string directoryPath = Path.Combine(solutionRoot, "ProjetDotnet.Generation", "Import");
-          
-            if (!Directory.Exists(directoryPath))
-            {
-                Directory.CreateDirectory(directoryPath);
-            }
+            string directoryBackup = Path.Combine(solutionRoot, "ProjetDotnet.Generation", "Backup");
 
-            string fileName = $"{DateTime.Now:yyyy_MM_dd}_enregistrement.xml";
+            if (!Directory.Exists(directoryPath))
+                Directory.CreateDirectory(directoryPath);
+
+            if (!Directory.Exists(directoryBackup))
+                Directory.CreateDirectory(directoryBackup);
+
+            string fileName = $"{DateTime.Now:yyyy_MM_dd_HH_mm_ss}_enregistrement.xml";
             string filePath = Path.Combine(directoryPath, fileName);
+            string filePathBackup = Path.Combine(directoryBackup, fileName);
 
             XmlSerializer serializer = new XmlSerializer(typeof(List<Enregistrements>));
             using (StreamWriter writer = new StreamWriter(filePath, false, Encoding.UTF8))
+            {
+                serializer.Serialize(writer, enregistrements);
+            }
+
+            using (StreamWriter writer = new StreamWriter(filePathBackup, false, Encoding.UTF8))
             {
                 serializer.Serialize(writer, enregistrements);
             }

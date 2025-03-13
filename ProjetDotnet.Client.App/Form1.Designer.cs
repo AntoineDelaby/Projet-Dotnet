@@ -1,4 +1,4 @@
-﻿namespace ProjetDotnet.Client.App
+namespace ProjetDotnet.Client.App
 {
     partial class Form1
     {
@@ -30,6 +30,7 @@
         {
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
             label14 = new Label();
@@ -48,6 +49,7 @@
             label16 = new Label();
             button2 = new Button();
             groupBox1 = new GroupBox();
+            button5 = new Button();
             yenBox = new TextBox();
             livreBox = new TextBox();
             dollarsBox = new TextBox();
@@ -247,7 +249,7 @@
             // 
             label17.AutoSize = true;
             label17.ForeColor = Color.Red;
-            label17.Location = new Point(174, 70);
+            label17.Location = new Point(6, 71);
             label17.Name = "label17";
             label17.Size = new Size(44, 15);
             label17.TabIndex = 5;
@@ -275,6 +277,7 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(button5);
             groupBox1.Controls.Add(yenBox);
             groupBox1.Controls.Add(livreBox);
             groupBox1.Controls.Add(dollarsBox);
@@ -287,6 +290,16 @@
             groupBox1.Size = new Size(427, 205);
             groupBox1.TabIndex = 1;
             groupBox1.TabStop = false;
+            // 
+            // button5
+            // 
+            button5.Image = (Image)resources.GetObject("button5.Image");
+            button5.Location = new Point(376, 17);
+            button5.Name = "button5";
+            button5.Size = new Size(26, 26);
+            button5.TabIndex = 6;
+            button5.UseVisualStyleBackColor = true;
+            button5.Click += button5_Click;
             // 
             // yenBox
             // 
@@ -313,11 +326,11 @@
             // 
             label9.AutoSize = true;
             label9.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label9.Location = new Point(86, 19);
+            label9.Location = new Point(15, 23);
             label9.Name = "label9";
-            label9.Size = new Size(267, 15);
+            label9.Size = new Size(355, 15);
             label9.TabIndex = 3;
-            label9.Text = "Veuillez saisir le taux du jour de chaque devises";
+            label9.Text = "Voici les taux du jour, vous pouvez les rafraichir en cas d'erreur";
             // 
             // label8
             // 
@@ -333,9 +346,9 @@
             label7.AutoSize = true;
             label7.Location = new Point(26, 103);
             label7.Name = "label7";
-            label7.Size = new Size(77, 15);
+            label7.Size = new Size(78, 15);
             label7.TabIndex = 1;
-            label7.Text = "Livre sterlling";
+            label7.Text = "Livre albanais";
             // 
             // label6
             // 
@@ -531,5 +544,6 @@
         private DateTimePicker dateTimePicker1;
         private DateTimePicker dateTimePicker2;
         private Label label18;
+        private Button button5;
     }
 }
