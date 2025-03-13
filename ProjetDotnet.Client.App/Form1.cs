@@ -28,7 +28,10 @@ namespace ProjetDotnet.Client.App
             mdpBox.KeyDown += new KeyEventHandler(Enter_KeyDown);
             onglet();
             initialisation_label();
-            initialiastion_data_view();        
+            initialiastion_data_view();
+
+            clientController = new ClientController();
+            fillComboBox();
         }
 
         public void onglet()
@@ -52,9 +55,6 @@ namespace ProjetDotnet.Client.App
             label17.Text = "";
             label16.Text = "";
             labelError.Text = "";
-
-            clientController = new ClientController();
-            fillComboBox();
         }
 
         public async void initialiastion_data_view()
@@ -256,8 +256,6 @@ namespace ProjetDotnet.Client.App
                 label15.Text = "Erreur lors de la mise à jour du solde : " + ex.Message;
             }
         }
-
-        //}
 
         private async void button4_Click(object sender, EventArgs e)
         {

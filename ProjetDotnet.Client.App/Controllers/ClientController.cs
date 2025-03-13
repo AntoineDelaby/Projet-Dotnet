@@ -65,14 +65,7 @@ namespace ProjetDotnet.Client.App.Controllers
         public async Task<string> GetAllAccountsWithClients()
         {
             using var context = new ClientDBContext();
-        public async Task<int> GenrerateXMLReport(string fileName, List<Historique> data)
-        {
-            // Chemin d'accès au fichier XML
-            // fileName = transacitons_{begDate}_{endDate}.xml
-            string projectRoot = Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent.FullName;
-            string solutionRoot = Directory.GetParent(projectRoot).FullName;
-            string filePath = Path.Combine(solutionRoot, "ProjetDotnet.Client.App", "XML\\", fileName);
-
+       
             var result = await context.CompteBancaire
                 .Include(cb => cb.Client)  
                 .Include(cb => cb.CarteBancaires)
@@ -90,6 +83,15 @@ namespace ProjetDotnet.Client.App.Controllers
             // Sérialisation en JSON
             return JsonSerializer.Serialize(result, new JsonSerializerOptions { WriteIndented = true });
         }
+
+        public async Task<int> GenrerateXMLReport(string fileName, List<Historique> data)
+        {
+            // Chemin d'accès au fichier XML
+            // fileName = transacitons_{begDate}_{endDate}.xml
+            string projectRoot = Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent.FullName;
+            string solutionRoot = Directory.GetParent(projectRoot).FullName;
+            string filePath = Path.Combine(solutionRoot, "ProjetDotnet.Client.App", "XML\\", fileName);
+
             // Si le fichier existe déjà, on le supprime (Plusieurs demandes de rapport dans la même journée)
             if (File.Exists(filePath))
             {
