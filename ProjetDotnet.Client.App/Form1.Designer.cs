@@ -44,6 +44,7 @@
             dataGridView1 = new DataGridView();
             label4 = new Label();
             tabPage3 = new TabPage();
+            label17 = new Label();
             label16 = new Label();
             button2 = new Button();
             groupBox1 = new GroupBox();
@@ -56,17 +57,16 @@
             label6 = new Label();
             label5 = new Label();
             tabPage4 = new TabPage();
+            label18 = new Label();
+            dateTimePicker2 = new DateTimePicker();
+            dateTimePicker1 = new DateTimePicker();
             labelError = new Label();
             label15 = new Label();
             comboBox1 = new ComboBox();
             button4 = new Button();
-            button3 = new Button();
             label12 = new Label();
             label11 = new Label();
-            monthCalendar2 = new MonthCalendar();
-            monthCalendar1 = new MonthCalendar();
             label10 = new Label();
-            label17 = new Label();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tabPage2.SuspendLayout();
@@ -243,6 +243,16 @@
             tabPage3.Text = "Mettre à jour solde";
             tabPage3.UseVisualStyleBackColor = true;
             // 
+            // label17
+            // 
+            label17.AutoSize = true;
+            label17.ForeColor = Color.Red;
+            label17.Location = new Point(174, 70);
+            label17.Name = "label17";
+            label17.Size = new Size(44, 15);
+            label17.TabIndex = 5;
+            label17.Text = "label17";
+            // 
             // label16
             // 
             label16.AutoSize = true;
@@ -348,15 +358,15 @@
             // 
             // tabPage4
             // 
+            tabPage4.Controls.Add(label18);
+            tabPage4.Controls.Add(dateTimePicker2);
+            tabPage4.Controls.Add(dateTimePicker1);
             tabPage4.Controls.Add(labelError);
             tabPage4.Controls.Add(label15);
             tabPage4.Controls.Add(comboBox1);
             tabPage4.Controls.Add(button4);
-            tabPage4.Controls.Add(button3);
             tabPage4.Controls.Add(label12);
             tabPage4.Controls.Add(label11);
-            tabPage4.Controls.Add(monthCalendar2);
-            tabPage4.Controls.Add(monthCalendar1);
             tabPage4.Controls.Add(label10);
             tabPage4.Location = new Point(4, 24);
             tabPage4.Name = "tabPage4";
@@ -366,21 +376,47 @@
             tabPage4.Text = "Transaction entre deux dates";
             tabPage4.UseVisualStyleBackColor = true;
             // 
+            // label18
+            // 
+            label18.AutoSize = true;
+            label18.ForeColor = Color.Green;
+            label18.Location = new Point(277, 317);
+            label18.Name = "label18";
+            label18.Size = new Size(23, 15);
+            label18.TabIndex = 12;
+            label18.Text = "OK";
+            label18.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // dateTimePicker2
+            // 
+            dateTimePicker2.Location = new Point(374, 226);
+            dateTimePicker2.Name = "dateTimePicker2";
+            dateTimePicker2.Size = new Size(200, 23);
+            dateTimePicker2.TabIndex = 11;
+            // 
+            // dateTimePicker1
+            // 
+            dateTimePicker1.Location = new Point(374, 176);
+            dateTimePicker1.Name = "dateTimePicker1";
+            dateTimePicker1.Size = new Size(200, 23);
+            dateTimePicker1.TabIndex = 10;
+            // 
             // labelError
             // 
             labelError.AutoSize = true;
             labelError.ForeColor = Color.Red;
-            labelError.Location = new Point(352, 66);
+            labelError.Location = new Point(242, 65);
             labelError.Name = "labelError";
             labelError.Size = new Size(38, 15);
             labelError.TabIndex = 9;
             labelError.Text = "Erreur";
+            labelError.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label15
             // 
             label15.AutoSize = true;
             label15.ForeColor = SystemColors.ActiveCaptionText;
-            label15.Location = new Point(42, 311);
+            label15.Location = new Point(178, 138);
             label15.Name = "label15";
             label15.Size = new Size(190, 15);
             label15.TabIndex = 8;
@@ -389,14 +425,14 @@
             // comboBox1
             // 
             comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(238, 308);
+            comboBox1.Location = new Point(374, 135);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(121, 23);
             comboBox1.TabIndex = 7;
             // 
             // button4
             // 
-            button4.Location = new Point(584, 363);
+            button4.Location = new Point(301, 277);
             button4.Name = "button4";
             button4.Size = new Size(128, 23);
             button4.TabIndex = 6;
@@ -404,19 +440,10 @@
             button4.UseVisualStyleBackColor = true;
             button4.Click += button4_Click;
             // 
-            // button3
-            // 
-            button3.Location = new Point(584, 325);
-            button3.Name = "button3";
-            button3.Size = new Size(128, 23);
-            button3.TabIndex = 5;
-            button3.Text = "Générez: PDF";
-            button3.UseVisualStyleBackColor = true;
-            // 
             // label12
             // 
             label12.AutoSize = true;
-            label12.Location = new Point(580, 81);
+            label12.Location = new Point(309, 232);
             label12.Name = "label12";
             label12.Size = new Size(48, 15);
             label12.TabIndex = 4;
@@ -425,25 +452,11 @@
             // label11
             // 
             label11.AutoSize = true;
-            label11.Location = new Point(128, 81);
+            label11.Location = new Point(292, 182);
             label11.Name = "label11";
             label11.Size = new Size(65, 15);
             label11.TabIndex = 3;
             label11.Text = "Date début";
-            // 
-            // monthCalendar2
-            // 
-            monthCalendar2.Location = new Point(485, 105);
-            monthCalendar2.MaxSelectionCount = 1;
-            monthCalendar2.Name = "monthCalendar2";
-            monthCalendar2.TabIndex = 2;
-            // 
-            // monthCalendar1
-            // 
-            monthCalendar1.Location = new Point(52, 105);
-            monthCalendar1.MaxSelectionCount = 1;
-            monthCalendar1.Name = "monthCalendar1";
-            monthCalendar1.TabIndex = 1;
             // 
             // label10
             // 
@@ -454,16 +467,6 @@
             label10.Size = new Size(313, 30);
             label10.TabIndex = 0;
             label10.Text = "Transaction entre deux dates";
-            // 
-            // label17
-            // 
-            label17.AutoSize = true;
-            label17.ForeColor = Color.Red;
-            label17.Location = new Point(174, 70);
-            label17.Name = "label17";
-            label17.Size = new Size(44, 15);
-            label17.TabIndex = 5;
-            label17.Text = "label17";
             // 
             // Form1
             // 
@@ -514,11 +517,8 @@
         private Button button2;
         private TextBox yenBox;
         private Button button4;
-        private Button button3;
         private Label label12;
         private Label label11;
-        private MonthCalendar monthCalendar2;
-        private MonthCalendar monthCalendar1;
         private Label label10;
         private Label label13;
         private Label label14;
@@ -528,5 +528,8 @@
         //private Label labelError2;
         private Label labelError;
         private Label label17;
+        private DateTimePicker dateTimePicker1;
+        private DateTimePicker dateTimePicker2;
+        private Label label18;
     }
 }

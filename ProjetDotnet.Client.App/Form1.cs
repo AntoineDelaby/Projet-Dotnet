@@ -55,6 +55,7 @@ namespace ProjetDotnet.Client.App
             label17.Text = "";
             label16.Text = "";
             labelError.Text = "";
+            label18.Text = "";
         }
 
         public async void initialiastion_data_view()
@@ -259,15 +260,16 @@ namespace ProjetDotnet.Client.App
 
         private async void button4_Click(object sender, EventArgs e)
         {
-            // Réinitialisation du label d'erreurs
+            // Réinitialisation des labels
             labelError.Text = "";
+            label18.Text = "";
 
             // Récupération des données
-            DateTime date1 = monthCalendar1.SelectionRange.Start;
-            DateTime date2 = monthCalendar2.SelectionRange.Start;
+            DateTime date1 = dateTimePicker1.Value;
+            DateTime date2 = dateTimePicker2.Value;
             string compteBancaireId = "";
 
-            if(comboBox1.SelectedItem == null)
+            if(comboBox1.SelectedItem == null || comboBox1.SelectedItem == "")
             {
                 labelError.Text = "Veuillez sélectionner un compte";
                 return;
@@ -284,12 +286,18 @@ namespace ProjetDotnet.Client.App
                 labelError.Text = "La date de début doit être antérieure à la date de fin";
                 return;
             }
+            if(date1 > DateTime.Now || date2 > DateTime.Now)
+            {
+                labelError.Text = "Les dates doivent être antérieures ou égales à la date du jour";
+                return;
+            }
 
             compteBancaireId = comboBox1.SelectedItem.ToString();
             CompteBancaire compte = await clientController.getById(compteBancaireId);
 
             string fileName = $"transacitons_{compteBancaireId}_{date1.ToString("yyyy-MM-dd")}_{date2.ToString("yyyy-MM-dd")}.xml";
             await clientController.GenrerateXMLReport(fileName, await clientController.GetTransactionsBetweenDates(compte.CarteBancaires, date1, date2));
+            label18.Text = "Fichier XML généré avec succès";
         }
     }
 }
