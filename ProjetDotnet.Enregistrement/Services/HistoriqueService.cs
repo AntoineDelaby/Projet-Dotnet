@@ -106,7 +106,12 @@ namespace ProjetDotnet.Server.API.Services
                 if(!item.Devise.Equals("EUR"))
                 {
                     // On fait la conversion en euros avec les taux qu'on récupère de la requête
-                    item.Montant = item.Montant * tauxDevise[item.Devise];
+                    item.MontantEuros = item.Montant / tauxDevise[item.Devise];
+                    item.Taux = tauxDevise[item.Devise];
+                } else
+                {
+                    item.MontantEuros = item.Montant;
+                    item.Taux = 1;
                 }
                 jsonList.Add(item);
             }

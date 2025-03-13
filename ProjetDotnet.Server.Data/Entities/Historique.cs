@@ -14,6 +14,13 @@ namespace ProjetDotnet.Server.Data
         public DateTime DateOperation { get; set; }
         public string Devise { get; set; }
 
+        // Champs supplémentaires pour l'export de données
+        [NotMapped]
+        public decimal Taux { get; set; }
+        [NotMapped]
+        public decimal MontantEuros { get; set; }
+
+
 
 
 

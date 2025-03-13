@@ -35,6 +35,7 @@ namespace ProjetDotnet.Server.API.Services
 
             try
             {
+                Console.WriteLine("Début du traitement du fichier XML");
                 FileStream xmlfs = new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.Read);
                 XmlSerializer serializer = new XmlSerializer(typeof(List<Enregistrements>));
                 using (StreamReader reader = new StreamReader(xmlfs))
@@ -50,7 +51,8 @@ namespace ProjetDotnet.Server.API.Services
                             Devise = enregistrement.Devise,
                             NumCarte = enregistrement.NumCarte
                         };
-                        await historiqueService.InsertHistorique(historiqueDto);
+                        var result = await historiqueService.InsertHistorique(historiqueDto);
+                        Console.WriteLine("Ajout en base terminé, code : " + result);
                     }
                 }
 
