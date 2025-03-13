@@ -12,7 +12,7 @@ using ProjetDotnet.Client.App;
 namespace ProjetDotnet.Client.App.Migrations
 {
     [DbContext(typeof(ClientDBContext))]
-    [Migration("20250312141812_InitialCreate")]
+    [Migration("20250313144428_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -160,6 +160,8 @@ namespace ProjetDotnet.Client.App.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("ClientId");
+
                     b.ToTable("CompteBancaire", (string)null);
 
                     b.HasData(
@@ -242,7 +244,7 @@ namespace ProjetDotnet.Client.App.Migrations
                         },
                         new
                         {
-                            Id = "3-2-BO-20250312-PR",
+                            Id = "3-2-BO-20250312-PE",
                             ClientId = 3,
                             DateOuverture = new DateTime(2025, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Solde = 1000m
@@ -474,6 +476,17 @@ namespace ProjetDotnet.Client.App.Migrations
                         .HasForeignKey("CompteBancaireId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("ProjetDotnet.Client.App.Entities.CompteBancaire", b =>
+                {
+                    b.HasOne("ProjetDotnet.Client.App.Clients", "Client")
+                        .WithMany()
+                        .HasForeignKey("ClientId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Client");
                 });
 
             modelBuilder.Entity("ProjetDotnet.Client.App.ClientParticulier", b =>

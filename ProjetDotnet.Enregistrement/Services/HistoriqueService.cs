@@ -80,8 +80,10 @@ namespace ProjetDotnet.Server.API.Services
         // Ajoute un nouvel enregistrement historisé s'il est validé
         public async Task<int> InsertHistorique(HistoriqueDto historique)
         {
-            Console.WriteLine("Insertion de l'historique : " + historique.Id + " " + historique.Montant + " " + historique.Devise);
+            Console.WriteLine("Insertion de l'historique : " + historique.Id + " " + 
+                                        historique.Montant + " " + historique.Devise);
             var insertResult = -1;
+            // Vérification de la validité du numéro de carte bancaire
             if(IsValidCardNumber(historique.NumCarte))
             {
                 Console.WriteLine("Carte valide : " + historique.NumCarte);
@@ -106,11 +108,11 @@ namespace ProjetDotnet.Server.API.Services
                 if(!item.Devise.Equals("EUR"))
                 {
                     // On fait la conversion en euros avec les taux qu'on récupère de la requête
-                    item.MontantEuros = item.Montant / tauxDevise[item.Devise];
+                    item.MontantEuros = Math.Round(item.Montant / tauxDevise[item.Devise], 2);
                     item.Taux = tauxDevise[item.Devise];
                 } else
                 {
-                    item.MontantEuros = item.Montant;
+                    item.MontantEuros = Math.Round(item.Montant, 2);
                     item.Taux = 1;
                 }
                 // En temps normal, on récupère uniquement les transactions du jour pour faire la mise à jour des soldes

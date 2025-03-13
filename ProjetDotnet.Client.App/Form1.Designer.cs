@@ -346,9 +346,10 @@ namespace ProjetDotnet.Client.App
             label7.AutoSize = true;
             label7.Location = new Point(26, 103);
             label7.Name = "label7";
-            label7.Size = new Size(78, 15);
+            label7.Size = new Size(74, 15);
             label7.TabIndex = 1;
-            label7.Text = "Livre albanais";
+            label7.Text = "Livre sterling";
+            label7.Click += label7_Click;
             // 
             // label6
             // 
@@ -440,7 +441,7 @@ namespace ProjetDotnet.Client.App
             comboBox1.FormattingEnabled = true;
             comboBox1.Location = new Point(374, 135);
             comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(121, 23);
+            comboBox1.Size = new Size(161, 23);
             comboBox1.TabIndex = 7;
             // 
             // button4

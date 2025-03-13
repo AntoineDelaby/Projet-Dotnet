@@ -32,20 +32,6 @@ namespace ProjetDotnet.Client.App.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "CompteBancaire",
-                columns: table => new
-                {
-                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    DateOuverture = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Solde = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    ClientId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_CompteBancaire", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "ClientParticulier",
                 columns: table => new
                 {
@@ -83,6 +69,26 @@ namespace ProjetDotnet.Client.App.Migrations
                     table.ForeignKey(
                         name: "FK_ClientProfessionnel_Clients_Identifiant",
                         column: x => x.Identifiant,
+                        principalTable: "Clients",
+                        principalColumn: "Identifiant",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "CompteBancaire",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    DateOuverture = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Solde = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    ClientId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CompteBancaire", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_CompteBancaire_Clients_ClientId",
+                        column: x => x.ClientId,
                         principalTable: "Clients",
                         principalColumn: "Identifiant",
                         onDelete: ReferentialAction.Cascade);
@@ -127,6 +133,31 @@ namespace ProjetDotnet.Client.App.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "ClientParticulier",
+                columns: new[] { "Identifiant", "DateDeNaissance", "Prenom", "Sexe" },
+                values: new object[,]
+                {
+                    { 1, new DateTime(1985, 11, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), "Daniel", "M" },
+                    { 3, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified).AddTicks(1955), "Justin", "M" },
+                    { 5, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified).AddTicks(1965), "Karine", "F" },
+                    { 7, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified).AddTicks(1961), "Alevandra", "F" },
+                    { 9, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified).AddTicks(1956), "Georgia", "F" },
+                    { 11, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified).AddTicks(1950), "Teddy", "M" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "ClientProfessionnel",
+                columns: new[] { "Identifiant", "Codepostal_Siege", "Complement_AdresseSiege", "Libelle_AdresseSiege", "Siret", "StatutJuridique", "Ville_Siege" },
+                values: new object[,]
+                {
+                    { 2, "94120", "digicode 1432", "125,rue lafayette", "12548795641122", "SARL", "FONTENAY SOUS BOIS" },
+                    { 4, "92060", "", "10, esplandade de la Defense", "87459564455444", "EURL", "LA DEFENSE" },
+                    { 6, "75002", "Bat.C", "32, rue E. Renan", "08755897458455", "SARL", "PARIS" },
+                    { 8, "92060", " Tour Franklin", "24, esplanade de la Defense", "65895874587854", "SA", "LA DEFENSE" },
+                    { 10, "75008", "", "10, rue de la paix", "91235987456832", "SAS", "Paris" }
+                });
+
+            migrationBuilder.InsertData(
                 table: "CompteBancaire",
                 columns: new[] { "Id", "ClientId", "DateOuverture", "Solde" },
                 values: new object[,]
@@ -136,7 +167,7 @@ namespace ProjetDotnet.Client.App.Migrations
                     { "11-1-AB-20250312-PE", 11, new DateTime(2025, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), 1000m },
                     { "2-1-AX-20250312-PR", 2, new DateTime(2025, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), 1000m },
                     { "3-1-BO-20250312-PE", 3, new DateTime(2025, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), 1000m },
-                    { "3-2-BO-20250312-PR", 3, new DateTime(2025, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), 1000m },
+                    { "3-2-BO-20250312-PE", 3, new DateTime(2025, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), 1000m },
                     { "4-1-PA-20250312-PR", 4, new DateTime(2025, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), 1000m },
                     { "5-1-BE-20250312-PE", 5, new DateTime(2025, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), 1000m },
                     { "6-1-PR-20250312-PR", 6, new DateTime(2025, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), 1000m },
@@ -162,35 +193,15 @@ namespace ProjetDotnet.Client.App.Migrations
                     { 9, "8-1-ZA-20250312-PR", "4974018502231232" }
                 });
 
-            migrationBuilder.InsertData(
-                table: "ClientParticulier",
-                columns: new[] { "Identifiant", "DateDeNaissance", "Prenom", "Sexe" },
-                values: new object[,]
-                {
-                    { 1, new DateTime(1985, 11, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), "Daniel", "M" },
-                    { 3, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified).AddTicks(1955), "Justin", "M" },
-                    { 5, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified).AddTicks(1965), "Karine", "F" },
-                    { 7, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified).AddTicks(1961), "Alevandra", "F" },
-                    { 9, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified).AddTicks(1956), "Georgia", "F" },
-                    { 11, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified).AddTicks(1950), "Teddy", "M" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "ClientProfessionnel",
-                columns: new[] { "Identifiant", "Codepostal_Siege", "Complement_AdresseSiege", "Libelle_AdresseSiege", "Siret", "StatutJuridique", "Ville_Siege" },
-                values: new object[,]
-                {
-                    { 2, "94120", "digicode 1432", "125,rue lafayette", "12548795641122", "SARL", "FONTENAY SOUS BOIS" },
-                    { 4, "92060", "", "10, esplandade de la Defense", "87459564455444", "EURL", "LA DEFENSE" },
-                    { 6, "75002", "Bat.C", "32, rue E. Renan", "08755897458455", "SARL", "PARIS" },
-                    { 8, "92060", " Tour Franklin", "24, esplanade de la Defense", "65895874587854", "SA", "LA DEFENSE" },
-                    { 10, "75008", "", "10, rue de la paix", "91235987456832", "SAS", "Paris" }
-                });
-
             migrationBuilder.CreateIndex(
                 name: "IX_CarteBancaire_CompteBancaireId",
                 table: "CarteBancaire",
                 column: "CompteBancaireId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CompteBancaire_ClientId",
+                table: "CompteBancaire",
+                column: "ClientId");
         }
 
         /// <inheritdoc />

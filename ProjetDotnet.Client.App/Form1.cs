@@ -290,7 +290,7 @@ namespace ProjetDotnet.Client.App
             DateTime date2 = dateTimePicker2.Value;
             string compteBancaireId = "";
 
-            if(comboBox1.SelectedItem == null || comboBox1.SelectedItem == "")
+            if (comboBox1.SelectedItem == null || comboBox1.SelectedItem == "")
             {
                 labelError.Text = "Veuillez sélectionner un compte";
                 return;
@@ -307,7 +307,7 @@ namespace ProjetDotnet.Client.App
                 labelError.Text = "La date de début doit être antérieure à la date de fin";
                 return;
             }
-            if(date1 > DateTime.Now || date2 > DateTime.Now)
+            if (date1 > DateTime.Now || date2 > DateTime.Now)
             {
                 labelError.Text = "Les dates doivent être antérieures ou égales à la date du jour";
                 return;
@@ -316,8 +316,10 @@ namespace ProjetDotnet.Client.App
             compteBancaireId = comboBox1.SelectedItem.ToString();
             CompteBancaire compte = await clientController.getById(compteBancaireId);
 
-            string fileName = $"transacitons_{compteBancaireId}_{date1.ToString("yyyy-MM-dd")}_{date2.ToString("yyyy-MM-dd")}.xml";
-            await clientController.GenrerateXMLReport(fileName, await clientController.GetTransactionsBetweenDates(compte.CarteBancaires, date1, date2));
+            string fileName = $"transacitons_{compteBancaireId}_" +
+                        $"{date1.ToString("yyyy-MM-dd")}_{date2.ToString("yyyy-MM-dd")}.xml";
+            await clientController.GenrerateXMLReport(fileName,
+                        await clientController.GetTransactionsBetweenDates(compte.CarteBancaires, date1, date2));
             label18.Text = "Fichier XML généré avec succès";
         }
 
@@ -326,5 +328,9 @@ namespace ProjetDotnet.Client.App
             getTaux();
         }
 
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

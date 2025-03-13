@@ -37,7 +37,7 @@ namespace ProjetDotnet.Server.Data.Repositories
             return historique;
         }
 
-        // Ajout d'un nouvel enregistrement valide dans la table d'historique
+        // Ajout d'un nouvel enregistrement dans la table d'historique
         public async Task<int> InsertHistorique(Historique historique)
         {
             using var context = new APIDbContext();
