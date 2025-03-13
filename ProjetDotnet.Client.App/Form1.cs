@@ -157,7 +157,6 @@ namespace ProjetDotnet.Client.App
                 label14.Text = "Connexion réussie !";
                 tabControl1.TabPages.Insert(1, hiddenCompte);
                 tabControl1.TabPages.Insert(2, hiddenJSON);
-                tabControl1.TabPages.Insert(3, hiddenDate);
                 indentBox.Enabled = false;
                 mdpBox.Enabled = false;
                 button1.Enabled = false;
@@ -183,7 +182,7 @@ namespace ProjetDotnet.Client.App
                 !decimal.TryParse(livreBox.Text, out tauxLivre) ||
                 !decimal.TryParse(yenBox.Text, out tauxYen))
             {
-                label17.Text = "Veuillez saisir des valeurs numériques valides pour les taux de change.";
+                label17.Text = "Veuillez générer les taux du jour.";
                 button2.Enabled = true;
                 return;
             }
@@ -205,6 +204,7 @@ namespace ProjetDotnet.Client.App
                 label16.Text = "Fichier JSON généré avec succès";
                 button2.Enabled = true;
                 maj_solde();
+                tabControl1.TabPages.Insert(3, hiddenDate);
             }
             else
             {

@@ -249,7 +249,7 @@ namespace ProjetDotnet.Client.App
             // 
             label17.AutoSize = true;
             label17.ForeColor = Color.Red;
-            label17.Location = new Point(6, 71);
+            label17.Location = new Point(174, 70);
             label17.Name = "label17";
             label17.Size = new Size(44, 15);
             label17.TabIndex = 5;
@@ -326,11 +326,11 @@ namespace ProjetDotnet.Client.App
             // 
             label9.AutoSize = true;
             label9.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label9.Location = new Point(15, 23);
+            label9.Location = new Point(23, 23);
             label9.Name = "label9";
-            label9.Size = new Size(355, 15);
+            label9.Size = new Size(347, 15);
             label9.TabIndex = 3;
-            label9.Text = "Voici les taux du jour, vous pouvez les rafraichir en cas d'erreur";
+            label9.Text = "Veuillez (re)générer les taux avant de mettre à jour les soldes";
             // 
             // label8
             // 
