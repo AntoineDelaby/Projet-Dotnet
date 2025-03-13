@@ -1,8 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using ProjetDotnet.Client.App.Entities;
 using ProjetDotnet.Server.Data;
 using ProjetDotnet.Server.Data.Context;
-using ProjetDotnet.Server.Data.Migrations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -63,6 +62,9 @@ namespace ProjetDotnet.Client.App.Controllers
             }
         }
 
+        public async Task<string> GetAllAccountsWithClients()
+        {
+            using var context = new ClientDBContext();
         public async Task<int> GenrerateXMLReport(string fileName, List<Historique> data)
         {
             // Chemin d'accès au fichier XML
@@ -71,6 +73,23 @@ namespace ProjetDotnet.Client.App.Controllers
             string solutionRoot = Directory.GetParent(projectRoot).FullName;
             string filePath = Path.Combine(solutionRoot, "ProjetDotnet.Client.App", "XML\\", fileName);
 
+            var result = await context.CompteBancaire
+                .Include(cb => cb.Client)  
+                .Include(cb => cb.CarteBancaires)
+                .Select(cb => new
+                {
+                    Identifiant_Client = cb.ClientId,
+                    Nom_Client = cb.Client.Nom,
+                    Id_CompteBancaire = cb.Id,
+                    DateOuverture_CompteBancaire = cb.DateOuverture,
+                    Solde_CompteBancaire = cb.Solde,
+                    CartesBancaires = cb.CarteBancaires.Select(c => c.NumeroCarte).ToList()
+                })
+                .ToListAsync();
+
+            // Sérialisation en JSON
+            return JsonSerializer.Serialize(result, new JsonSerializerOptions { WriteIndented = true });
+        }
             // Si le fichier existe déjà, on le supprime (Plusieurs demandes de rapport dans la même journée)
             if (File.Exists(filePath))
             {

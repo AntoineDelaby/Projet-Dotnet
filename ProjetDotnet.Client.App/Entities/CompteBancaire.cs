@@ -17,6 +17,7 @@ namespace ProjetDotnet.Client.App.Entities
         public decimal Solde { get; set; }
         public int ClientId { get; set; }
         public ICollection<CarteBancaire> CarteBancaires { get; set; }
+        public virtual Clients Client { get; set; }
 
         public CompteBancaire()
         {
