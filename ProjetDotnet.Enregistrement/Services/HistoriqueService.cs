@@ -106,13 +106,35 @@ namespace ProjetDotnet.Server.API.Services
                 if(!item.Devise.Equals("EUR"))
                 {
                     // On fait la conversion en euros avec les taux qu'on récupère de la requête
-                    item.Montant = item.Montant * tauxDevise[item.Devise];
+                    item.MontantEuros = item.Montant / tauxDevise[item.Devise];
+                    item.Taux = tauxDevise[item.Devise];
+                } else
+                {
+                    item.MontantEuros = item.Montant;
+                    item.Taux = 1;
                 }
+                // En temps normal, on récupère uniquement les transactions du jour pour faire la mise à jour des soldes
+                //if(item.DateOperation == DateTime.Now)
+                //{
+                //    jsonList.Add(item);
+                //}
                 jsonList.Add(item);
             }
 
             // Destination du fichier JSON
-            string filePath = Path.Combine(Directory.GetCurrentDirectory(), "Exports\\export.json");
+            // Destination sur le serveur
+            //string filePath = Path.Combine(Directory.GetCurrentDirectory(), "Exports\\export.json");
+            // Destination sur le client
+            string projectRoot = Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent.FullName;
+            string solutionRoot = Directory.GetParent(projectRoot).FullName;
+            string directoryPath = Path.Combine(solutionRoot, "ProjetDotnet.Client.App", "Json");
+
+            if (!Directory.Exists(directoryPath))
+            {
+                Directory.CreateDirectory(directoryPath);
+            }
+
+            string filePath = Path.Combine(directoryPath, "export.json");
 
             // Suppression du fichier JSON précédent
             if (File.Exists(filePath))
