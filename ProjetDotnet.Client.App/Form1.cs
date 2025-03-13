@@ -264,6 +264,7 @@ namespace ProjetDotnet.Client.App
                                 }
 
                                 row.Cells["Solde_CompteBancaire"].Value = misesAJourSoldes[idCompte].ToString("0.00");
+                                await clientController.UpdageCompteBancaireSolde(idCompte, misesAJourSoldes[idCompte]);
                             }
                         }
                     }

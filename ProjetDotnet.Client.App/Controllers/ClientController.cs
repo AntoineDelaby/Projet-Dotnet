@@ -133,5 +133,20 @@ namespace ProjetDotnet.Client.App.Controllers
             var service = new TauxDeChangeService();
             return await service.GetTauxDeChangeAsync();
         }
+
+        public async Task<CompteBancaire> UpdageCompteBancaireSolde(string compteBancaireId, decimal newSolde)
+        {
+            using var context = new ClientDBContext();
+
+            var compte = await context.CompteBancaire.FirstOrDefaultAsync<CompteBancaire>(c => c.Id == compteBancaireId);
+
+            if(compte != null)
+            {
+                compte.Solde = newSolde;
+                await context.SaveChangesAsync();
+            }
+
+            return compte; 
+        }
     }
 }

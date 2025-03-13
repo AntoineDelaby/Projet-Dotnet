@@ -113,6 +113,11 @@ namespace ProjetDotnet.Server.API.Services
                     item.MontantEuros = item.Montant;
                     item.Taux = 1;
                 }
+                // En temps normal, on récupère uniquement les transactions du jour pour faire la mise à jour des soldes
+                //if(item.DateOperation == DateTime.Now)
+                //{
+                //    jsonList.Add(item);
+                //}
                 jsonList.Add(item);
             }
 
