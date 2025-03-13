@@ -44,7 +44,7 @@
             dataGridView1 = new DataGridView();
             label4 = new Label();
             tabPage3 = new TabPage();
-            label15 = new Label();
+            label16 = new Label();
             button2 = new Button();
             groupBox1 = new GroupBox();
             yenBox = new TextBox();
@@ -56,7 +56,8 @@
             label6 = new Label();
             label5 = new Label();
             tabPage4 = new TabPage();
-            labelError2 = new Label();
+            labelError = new Label();
+            label15 = new Label();
             comboBox1 = new ComboBox();
             button4 = new Button();
             button3 = new Button();
@@ -65,8 +66,7 @@
             monthCalendar2 = new MonthCalendar();
             monthCalendar1 = new MonthCalendar();
             label10 = new Label();
-            label16 = new Label();
-            labelError = new Label();
+            label17 = new Label();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tabPage2.SuspendLayout();
@@ -230,8 +230,8 @@
             // 
             // tabPage3
             // 
+            tabPage3.Controls.Add(label17);
             tabPage3.Controls.Add(label16);
-            tabPage3.Controls.Add(label15);
             tabPage3.Controls.Add(button2);
             tabPage3.Controls.Add(groupBox1);
             tabPage3.Controls.Add(label5);
@@ -243,15 +243,15 @@
             tabPage3.Text = "Mettre à jour solde";
             tabPage3.UseVisualStyleBackColor = true;
             // 
-            // label15
+            // label16
             // 
-            label15.AutoSize = true;
-            label15.ForeColor = Color.Red;
-            label15.Location = new Point(174, 79);
-            label15.Name = "label15";
-            label15.Size = new Size(44, 15);
-            label15.TabIndex = 3;
-            label15.Text = "label15";
+            label16.AutoSize = true;
+            label16.ForeColor = Color.Green;
+            label16.Location = new Point(174, 345);
+            label16.Name = "label16";
+            label16.Size = new Size(44, 15);
+            label16.TabIndex = 4;
+            label16.Text = "label16";
             // 
             // button2
             // 
@@ -366,9 +366,20 @@
             tabPage4.Text = "Transaction entre deux dates";
             tabPage4.UseVisualStyleBackColor = true;
             // 
+            // labelError
+            // 
+            labelError.AutoSize = true;
+            labelError.ForeColor = Color.Red;
+            labelError.Location = new Point(352, 66);
+            labelError.Name = "labelError";
+            labelError.Size = new Size(38, 15);
+            labelError.TabIndex = 9;
+            labelError.Text = "Erreur";
+            // 
             // label15
             // 
             label15.AutoSize = true;
+            label15.ForeColor = SystemColors.ActiveCaptionText;
             label15.Location = new Point(42, 311);
             label15.Name = "label15";
             label15.Size = new Size(190, 15);
@@ -444,25 +455,15 @@
             label10.TabIndex = 0;
             label10.Text = "Transaction entre deux dates";
             // 
-            // label16
+            // label17
             // 
-            label16.AutoSize = true;
-            label16.ForeColor = Color.Green;
-            label16.Location = new Point(174, 345);
-            label16.Name = "label16";
-            label16.Size = new Size(44, 15);
-            label16.TabIndex = 4;
-            label16.Text = "label16";
-            // 
-            // labelError
-            // 
-            labelError.AutoSize = true;
-            labelError.ForeColor = Color.Red;
-            labelError.Location = new Point(352, 66);
-            labelError.Name = "labelError";
-            labelError.Size = new Size(38, 15);
-            labelError.TabIndex = 9;
-            labelError.Text = "Erreur";
+            label17.AutoSize = true;
+            label17.ForeColor = Color.Red;
+            label17.Location = new Point(174, 70);
+            label17.Name = "label17";
+            label17.Size = new Size(44, 15);
+            label17.TabIndex = 5;
+            label17.Text = "label17";
             // 
             // Form1
             // 
@@ -524,7 +525,8 @@
         private Label label15;
         private Label label16;
         private ComboBox comboBox1;
-        private Label labelError2;
+        //private Label labelError2;
         private Label labelError;
+        private Label label17;
     }
 }
