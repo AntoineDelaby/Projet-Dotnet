@@ -56,7 +56,7 @@
             label6 = new Label();
             label5 = new Label();
             tabPage4 = new TabPage();
-            label15 = new Label();
+            labelError2 = new Label();
             comboBox1 = new ComboBox();
             button4 = new Button();
             button3 = new Button();
@@ -524,7 +524,7 @@
         private Label label15;
         private Label label16;
         private ComboBox comboBox1;
-        private Label label15;
+        private Label labelError2;
         private Label labelError;
     }
 }

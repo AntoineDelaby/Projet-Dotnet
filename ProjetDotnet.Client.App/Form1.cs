@@ -34,7 +34,7 @@ namespace ProjetDotnet.Client.App
 
             label13.Text = "";
             label14.Text = "";
-            label15.Text = "";
+            //label15.Text = "";
             label16.Text = "";
             labelError.Text = "";
 
@@ -78,7 +78,7 @@ namespace ProjetDotnet.Client.App
         private async void button2_Click(object sender, EventArgs e)
         {
             button2.Enabled = false;
-            label15.Text = "";
+            //label15.Text = "";
             label16.Text = "";
 
             string apiUrl = "https://localhost:7075/api/historique/jsonHistory";
@@ -90,7 +90,7 @@ namespace ProjetDotnet.Client.App
                 !decimal.TryParse(livreBox.Text, out tauxLivre) ||
                 !decimal.TryParse(yenBox.Text, out tauxYen))
             {
-                label15.Text = "Veuillez saisir des valeurs numériques valides pour les taux de change.";
+                //label15.Text = "Veuillez saisir des valeurs numériques valides pour les taux de change.";
                 return;
             }
 
@@ -117,11 +117,11 @@ namespace ProjetDotnet.Client.App
             else
             {
                 string errorMessage = await response.Content.ReadAsStringAsync();    
-                label15.Text = $"Erreur : {errorMessage}";
+                //label15.Text = $"Erreur : {errorMessage}";
             }
         } 
 
-        }
+        //}
 
         private async void button4_Click(object sender, EventArgs e)
         {
